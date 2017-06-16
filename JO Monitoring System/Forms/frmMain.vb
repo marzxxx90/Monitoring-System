@@ -5,7 +5,6 @@ Imports System.Data.Odbc
 
 Public Class frmMain
     Private SampleString As String = "Data Source=MISLAMION-PC\SQLEXPRESS;Initial Catalog=C@TCHM3;Integrated Security=True"
-
     Private SampleCon As SqlConnection
     Private SampleCommand As SqlCommand
     Private da As SqlDataAdapter
@@ -15,7 +14,6 @@ Public Class frmMain
     End Sub
 
     Private Sub Search_Record()
-        'Dim connectionString As String = "Data Source=.;Initial Catalog=pubs;Integrated Security=True"
         Dim sql As String = "Select * From tblMaintenance"
         Dim connection As New SqlConnection(SampleString)
         Dim datadapter As New SqlDataAdapter(sql, connection)
