@@ -22,17 +22,33 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+
+        Me.dgSample = New System.Windows.Forms.DataGridView()
+        CType(Me.dgSample, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
+        'dgSample
+        '
+        Me.dgSample.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgSample.Location = New System.Drawing.Point(12, 24)
+        Me.dgSample.Name = "dgSample"
+        Me.dgSample.Size = New System.Drawing.Size(570, 150)
+        Me.dgSample.TabIndex = 0
+        '
+
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(284, 262)
+        Me.ClientSize = New System.Drawing.Size(594, 262)
+        Me.Controls.Add(Me.dgSample)
         Me.Name = "frmMain"
-        Me.Text = "Form1"
+        Me.Text = "Main Form"
+        CType(Me.dgSample, System.ComponentModel.ISupportInitialize).EndInit()
+
         Me.ResumeLayout(False)
 
     End Sub
+    Friend WithEvents dgSample As System.Windows.Forms.DataGridView
 
 End Class
