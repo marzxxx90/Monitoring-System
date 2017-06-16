@@ -1,17 +1,16 @@
-﻿Imports System.Data.Odbc
+﻿Imports System.Data.SqlClient
 ''' <summary>
 ''' This module declare the connection of the database.
 ''' 
 ''' </summary>
 ''' <remarks></remarks>
 Friend Module database
-    Public con As OdbcConnection
-    Public ReaderCon As OdbcConnection
-    Friend dbName As String = "W3W1LH4CKU.FDB" 'Final
-    Friend fbUser As String = "SYSDBA"
-    Friend fbPass As String = "masterkey"
+    Public con As SqlConnection
+    Public ReaderCon As SqlConnection
+    Friend dbName As String = "C@TCHM3" 'Final
     Friend fbDataSet As New DataSet
     Friend conStr As String = String.Empty
+
 
 
     'Private DBversion As String = "1.3.3" 'Database version.
@@ -23,16 +22,15 @@ Friend Module database
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub dbOpen()
-        conStr = "DRIVER=Firebird/InterBase(r) driver;User=" & fbUser & ";Password=" & fbPass & ";Database=" & dbName & ";"
+        conStr = "Data Source=MISLAMION-PC\SQLEXPRESS;Initial Catalog=" & dbName & ";Integrated Security=True"
 
-        con = New OdbcConnection(conStr)
+        con = New SqlConnection(conStr)
         Try
             con.Open()
         Catch ex As Exception
             con.Dispose()
             MsgBox(language(0) + vbCrLf + ex.Message.ToString, vbCritical, "Connecting Error")
             Log_Report(ex.Message.ToString)
-            Log_Report(String.Format("User: {0}", fbUser))
             Log_Report(String.Format("Database: {0}", dbName))
             Exit Sub
         End Try
@@ -77,7 +75,7 @@ Friend Module database
 
         dbOpen()
 
-        Dim da As OdbcDataAdapter
+        Dim da As SqlDataAdapter
         Dim ds As New DataSet, mySql As String, fillData As String
         ds = dsEntry
 
@@ -93,8 +91,8 @@ Friend Module database
                 Console.WriteLine("ModifySQL: " & mySql)
             End If
 
-            da = New OdbcDataAdapter(mySql, con)
-            Dim cb As New OdbcCommandBuilder(da) 'Required in Saving/Update to Database
+            da = New SqlDataAdapter(mySql, con)
+            Dim cb As New SqlCommandBuilder(da) 'Required in Saving/Update to Database
             da.Update(ds, fillData)
         Next
 
@@ -103,11 +101,11 @@ Friend Module database
     End Function
 
     Friend Sub SQLCommand(ByVal sql As String)
-        conStr = "DRIVER=Firebird/InterBase(r) driver;User=" & fbUser & ";Password=" & fbPass & ";Database=" & dbName & ";"
-        con = New OdbcConnection(conStr)
+        conStr = "Data Source=MISLAMION-PC\SQLEXPRESS;Initial Catalog=" & dbName & ";Integrated Security=True"
+        con = New SqlConnection(conStr)
 
-        Dim cmd As OdbcCommand
-        cmd = New OdbcCommand(sql, con)
+        Dim cmd As SqlCommand
+        cmd = New SqlCommand(sql, con)
 
         Try
             con.Open()
@@ -151,10 +149,10 @@ Friend Module database
     Friend Function LoadSQL(ByVal mySql As String, Optional ByVal tblName As String = "QuickSQL") As DataSet
         dbOpen() 'open the database.
 
-        Dim da As OdbcDataAdapter
+        Dim da As SqlDataAdapter
         Dim ds As New DataSet, fillData As String = tblName
         Try
-            da = New OdbcDataAdapter(mySql, con)
+            da = New SqlDataAdapter(mySql, con)
             da.Fill(ds, fillData)
         Catch ex As Exception
             Console.WriteLine(">>>>>" & mySql)
@@ -174,9 +172,9 @@ Friend Module database
     ''' <param name="mySql">mysql where the data pass</param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Friend Function LoadSQL_byDataReader(ByVal mySql As String) As OdbcDataReader
-        Dim myCom As OdbcCommand = New OdbcCommand(mySql, ReaderCon)
-        Dim reader As OdbcDataReader = myCom.ExecuteReader()
+    Friend Function LoadSQL_byDataReader(ByVal mySql As String) As SqlDataReader
+        Dim myCom As SqlCommand = New SqlCommand(mySql, ReaderCon)
+        Dim reader As SqlDataReader = myCom.ExecuteReader()
 
         Return reader
     End Function
@@ -185,9 +183,9 @@ Friend Module database
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub dbReaderOpen()
-        conStr = "DRIVER=Firebird/InterBase(r) driver;User=" & fbUser & ";Password=" & fbPass & ";Database=" & dbName & ";"
+        conStr = "Data Source=MISLAMION-PC\SQLEXPRESS;Initial Catalog=" & dbName & ";Integrated Security=True"
 
-        ReaderCon = New OdbcConnection(conStr)
+        ReaderCon = New SqlConnection(conStr)
         Try
             ReaderCon.Open() 'open the database.
         Catch ex As Exception
