@@ -14,16 +14,27 @@ Public Class frmMain
     End Sub
 
     Private Sub Search_Record()
-        Dim sql As String = "Select * From tblMaintenance"
-        Dim connection As New SqlConnection(SampleString)
-        Dim datadapter As New SqlDataAdapter(sql, connection)
-        Dim ds As New DataSet()
-        connection.Open()
-        datadapter.Fill(ds, "tblMaintenance")
-        connection.Close()
+        'Dim sql As String = "Select * From tblMaintenance"
+        'Dim connection As New SqlConnection(SampleString)
+        'Dim datadapter As New SqlDataAdapter(sql, connection)
+        'Dim ds As New DataSet()
+        'connection.Open()
+        'datadapter.Fill(ds, "tblMaintenance")
+        'connection.Close()
 
-        dgSample.DataSource = ds
-        dgSample.DataMember = "tblMaintenance"
+        'dgSample.DataSource = ds
+        'dgSample.DataMember = "tblMaintenance"
+
+        Dim mysql As String = "Select * From tblMaintenance"
+        Dim ds As DataSet = LoadSQL(mysql, "tblMaintenance")
+
+        For Each dr In ds.Tables(0).Rows
+            Console.WriteLine(dr.item("M_Name"))
+            With dr
+                dgSample.Rows.Add(.item("M_ID"), .item("M_name"), .item("M_Value"), IIf(IsDBNull(.item("Remarks")), "", .item("Remarks")))
+            End With
+
+        Next
 
     End Sub
 
