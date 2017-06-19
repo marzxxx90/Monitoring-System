@@ -87,26 +87,106 @@
 
 #Region "FUNCTIONS AND PROCEDURES"
     Friend Sub CreateADMIN(Optional ByVal pssword As String = "MISDEPT", Optional ByVal username As String = "Admin")
-        mysql = "SELECT * FROM " & tblLogin
+        mysql = "SELECT * FROM " & tblLogin & " WHERE USERPASS = '" & EncryptString(pssword) & "'"
         Dim ds As DataSet = LoadSQL(mysql, tblLogin)
 
         Dim Fname = "MIS", Lname = "DEPARTMENT", ROLE = "Admin"
 
-        Dim dsNewrow As DataRow
-        dsNewrow = ds.Tables(0).NewRow
+        If ds.Tables(0).Rows.Count = 1 Then
+            Dim dsNewrow As DataRow
+            dsNewrow = ds.Tables(0).NewRow
+            With dsNewrow
+                .Item("USERNAME") = username
+                .Item("USERPASS") = EncryptString(pssword)
+                .Item("FNAME") = Fname
+                .Item("LNAME") = Lname
+                .Item("ROLE") = ROLE
+                .Item("STATUS") = 1
+            End With
+            ds.Tables(0).Rows.Add(dsNewrow)
+            database.SaveEntry(ds) : Console.WriteLine("Admin created.")
 
-        With dsNewrow
-            .Item("USERNAME") = username
-            .Item("USERPASS") = EncryptString(pssword)
-            .Item("FNAME") = Fname
-            .Item("LNAME") = Lname
-            .Item("ROLE") = ROLE
-            .Item("STATUS") = 1
-        End With
-        ds.Tables(0).Rows.Add(dsNewrow)
-        database.SaveEntry(ds)
-        Console.WriteLine("Admin created.")
+        Else
+            With ds.Tables(0).Rows(0)
+                .Item("USERNAME") = username
+                .Item("USERPASS") = EncryptString(pssword)
+                .Item("FNAME") = Fname
+                .Item("LNAME") = Lname
+                .Item("ROLE") = ROLE
+                .Item("STATUS") = 1
+            End With
+            database.SaveEntry(ds) : Console.WriteLine("Admin Updated.")
+        End If
+
     End Sub
 
+    Friend Sub saveuser(ByVal id As Integer)
+        mysql = "SELECT * FROM " & tblLogin & " WHERE USERID = " & id
+        Dim ds As DataSet = LoadSQL(mysql, tblLogin)
+
+        If ds.Tables(0).Rows.Count = 1 Then
+            Dim dsNewrow As DataRow
+            dsNewrow = ds.Tables(0).NewRow
+            With dsNewrow
+                .Item("USERNAME") = _USERNAME
+                .Item("USERPASS") = EncryptString(_USERPASS)
+                .Item("FNAME") = _FIRSTNAME
+                .Item("MNAME") = _MIDDLENAME
+                .Item("LNAME") = _LASTNAME
+                .Item("ROLE") = _ROLE
+                .Item("STATUS") = 1
+            End With
+            ds.Tables(0).Rows.Add(dsNewrow)
+            database.SaveEntry(ds) : Console.WriteLine("User account saved.")
+
+        Else
+            With ds.Tables(0).Rows(0)
+                .Item("USERNAME") = _USERNAME
+                .Item("USERPASS") = EncryptString(_USERPASS)
+                .Item("FNAME") = _FIRSTNAME
+                .Item("MNAME") = _MIDDLENAME
+                .Item("LNAME") = _LASTNAME
+                .Item("ROLE") = _ROLE
+                .Item("STATUS") = 1
+            End With
+            database.SaveEntry(ds) : Console.WriteLine("User account udated.")
+        End If
+    End Sub
+
+
+    Friend Function UserLogin(ByVal Uname As String, ByVal Upass As String) As Boolean
+        mysql = "SELECT * FROM " & tblLogin & " WHERE USERNAME = '" & Uname & "'" & _
+                " AND USERPASS ='" & EncryptString(Upass) & "'"
+
+        Dim ds As DataSet = LoadSQL(mysql, tblLogin)
+
+        If ds.Tables(0).Rows.Count = 0 Then Return False
+
+
+        Return True
+    End Function
+
+    Friend Sub LOADBYID(ByVal UID As Integer)
+        mysql = "SELECT * FROM " & tblLogin & " WHERE USERID = " & UID
+        Dim ds As DataSet = LoadSQL(mysql, tblLogin)
+
+        Loadbyrow(ds.Tables(0).Rows(0))
+    End Sub
+
+    Private Sub Loadbyrow(ByVal dr As DataRow)
+
+        With dr
+            _ID = .Item("USERID")
+            _USERNAME = .Item("USERNAME")
+            _USERPASS = .Item("USERPASS")
+            _FIRSTNAME = .Item("FNAME")
+            _MIDDLENAME = .Item("MNAME")
+            _LASTNAME = .Item("LNAME")
+            _ROLE = .Item("ROLE")
+            _STATUS = .Item("STATUS")
+        End With
+
+        Console.WriteLine("USERID :" & _ID)
+    End Sub
 #End Region
 End Class

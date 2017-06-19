@@ -9,8 +9,12 @@ Module mod_system
     Public ADS_SHOW As Boolean = False
 
     Public CurrentDate As Date = Now
-    'Public POSuser As New ComputerUser
-    'Public UserID As Integer = POSuser.UserID
+    Public SysUser As New SystemUser
+    Public UType As String = ""
+    Public FullName As String = ""
+
+    Public UserID As Integer = SysUser.ID
+
     Public BranchCode As String = GetOption("BranchCode")
     Public branchName As String = GetOption("BranchName")
     Public AREACODE As String = GetOption("BranchArea")
