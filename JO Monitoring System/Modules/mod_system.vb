@@ -25,13 +25,6 @@ Module mod_system
     Public backupPath As String = "."
 
     Friend advanceInterestDays As Integer = 30
-    Friend MaintainBal As Double = GetOption("MaintainingBalance")
-    Friend InitialBal As Double = GetOption("CurrentBalance")
-    Friend RepDep As Double = 0
-    Friend DollarRate As Double = 48
-    Friend DollarAllRate As Double
-    Friend RequirementLevel As Integer = 1
-    Friend dailyID As Integer = 1
 
     Friend TBLINT_HASH As String = ""
     Friend PAWN_JE As Boolean = False

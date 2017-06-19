@@ -86,28 +86,21 @@
     End Property
 
 #Region "FUNCTIONS AND PROCEDURES"
-    Friend Sub CreateADMIN(Optional ByVal pssword As String = "MISDEPT", Optional ByVal username As String = "Admin")
+    Friend Sub CreateADMIN(Optional ByVal pssword As String = "misdept", Optional ByVal username As String = "Admin")
         mysql = "SELECT * FROM " & tblLogin & " WHERE USERPASS = '" & EncryptString(pssword) & "'"
         Dim ds As DataSet = LoadSQL(mysql, tblLogin)
 
         Dim Fname = "MIS", Lname = "DEPARTMENT", ROLE = "Admin"
 
-        If ds.Tables(0).Rows.Count = 1 Then
-            Dim dsNewrow As DataRow
-            dsNewrow = ds.Tables(0).NewRow
-            With dsNewrow
-                .Item("USERNAME") = username
-                .Item("USERPASS") = EncryptString(pssword)
-                .Item("FNAME") = Fname
-                .Item("LNAME") = Lname
-                .Item("ROLE") = ROLE
-                .Item("STATUS") = 1
-            End With
-            ds.Tables(0).Rows.Add(dsNewrow)
-            database.SaveEntry(ds) : Console.WriteLine("Admin created.")
+        If ds.Tables(0).Rows.Count >= 1 Then
+            Exit Sub
 
         Else
-            With ds.Tables(0).Rows(0)
+
+            Dim dsNewRow As DataRow
+            dsNewRow = ds.Tables(tblLogin).NewRow
+
+            With dsNewRow
                 .Item("USERNAME") = username
                 .Item("USERPASS") = EncryptString(pssword)
                 .Item("FNAME") = Fname
@@ -115,6 +108,7 @@
                 .Item("ROLE") = ROLE
                 .Item("STATUS") = 1
             End With
+            ds.Tables(0).Rows.Add(dsNewRow)
             database.SaveEntry(ds) : Console.WriteLine("Admin Updated.")
         End If
 
@@ -137,7 +131,7 @@
                 .Item("STATUS") = 1
             End With
             ds.Tables(0).Rows.Add(dsNewrow)
-            database.SaveEntry(ds) : Console.WriteLine("User account saved.")
+            database.SaveEntry(ds, False) : Console.WriteLine("User account saved.")
 
         Else
             With ds.Tables(0).Rows(0)
@@ -155,14 +149,14 @@
 
 
     Friend Function UserLogin(ByVal Uname As String, ByVal Upass As String) As Boolean
-        mysql = "SELECT * FROM " & tblLogin & " WHERE USERNAME = '" & Uname & "'" & _
+        mysql = "SELECT * FROM " & tblLogin & " WHERE upper(USERNAME) = upper('" & Uname & "')" & _
                 " AND USERPASS ='" & EncryptString(Upass) & "'"
 
         Dim ds As DataSet = LoadSQL(mysql, tblLogin)
 
         If ds.Tables(0).Rows.Count = 0 Then Return False
 
-
+        LOADBYID(ds.Tables(0).Rows(0).Item(0))
         Return True
     End Function
 
@@ -180,7 +174,7 @@
             _USERNAME = .Item("USERNAME")
             _USERPASS = .Item("USERPASS")
             _FIRSTNAME = .Item("FNAME")
-            _MIDDLENAME = .Item("MNAME")
+            _MIDDLENAME = IIf(IsDBNull(.Item("MNAME")), "", .Item("MNAME"))
             _LASTNAME = .Item("LNAME")
             _ROLE = .Item("ROLE")
             _STATUS = .Item("STATUS")

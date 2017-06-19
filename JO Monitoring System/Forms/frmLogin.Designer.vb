@@ -24,25 +24,18 @@ Partial Class frmLogin
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmLogin))
         Me.txtusername = New System.Windows.Forms.TextBox()
-        Me.txtuserpass = New System.Windows.Forms.TextBox()
         Me.btnLogin = New System.Windows.Forms.Button()
         Me.btnExit = New System.Windows.Forms.Button()
+        Me.txtuserpass = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'txtusername
         '
-        Me.txtusername.Location = New System.Drawing.Point(159, 131)
+        Me.txtusername.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtusername.Location = New System.Drawing.Point(159, 126)
         Me.txtusername.Name = "txtusername"
-        Me.txtusername.Size = New System.Drawing.Size(141, 20)
+        Me.txtusername.Size = New System.Drawing.Size(141, 23)
         Me.txtusername.TabIndex = 0
-        '
-        'txtuserpass
-        '
-        Me.txtuserpass.Location = New System.Drawing.Point(159, 158)
-        Me.txtuserpass.Name = "txtuserpass"
-        Me.txtuserpass.Size = New System.Drawing.Size(141, 20)
-        Me.txtuserpass.TabIndex = 1
-        Me.txtuserpass.UseSystemPasswordChar = True
         '
         'btnLogin
         '
@@ -64,6 +57,15 @@ Partial Class frmLogin
         Me.btnExit.TabIndex = 3
         Me.btnExit.UseVisualStyleBackColor = False
         '
+        'txtuserpass
+        '
+        Me.txtuserpass.Font = New System.Drawing.Font("Lucida Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtuserpass.Location = New System.Drawing.Point(159, 155)
+        Me.txtuserpass.Name = "txtuserpass"
+        Me.txtuserpass.Size = New System.Drawing.Size(141, 23)
+        Me.txtuserpass.TabIndex = 1
+        Me.txtuserpass.UseSystemPasswordChar = True
+        '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -71,9 +73,9 @@ Partial Class frmLogin
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(406, 332)
+        Me.Controls.Add(Me.txtuserpass)
         Me.Controls.Add(Me.btnExit)
         Me.Controls.Add(Me.btnLogin)
-        Me.Controls.Add(Me.txtuserpass)
         Me.Controls.Add(Me.txtusername)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "frmLogin"
@@ -84,7 +86,7 @@ Partial Class frmLogin
 
     End Sub
     Friend WithEvents txtusername As System.Windows.Forms.TextBox
-    Friend WithEvents txtuserpass As System.Windows.Forms.TextBox
     Friend WithEvents btnLogin As System.Windows.Forms.Button
     Friend WithEvents btnExit As System.Windows.Forms.Button
+    Friend WithEvents txtuserpass As System.Windows.Forms.TextBox
 End Class

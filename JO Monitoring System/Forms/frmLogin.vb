@@ -13,9 +13,10 @@
 
         If Not users.UserLogin(uName, pName) Then
             'Username not register
+            i += 1
                 If i >= 3 Then
                     MsgBox("You have reached the MAXIMUM logins. This is a recording.", MsgBoxStyle.Critical)
-                    Clearfield()
+                Clearfield() : txtusername.Focus()
                     End
                 End If
             MsgBox("Invalid Username or Password!", MsgBoxStyle.Exclamation, "Invalid") : Clearfield() : Exit Sub
@@ -27,10 +28,10 @@
         UserID = users.ID
         FullName = users.FIRSTNAME & " " & users.LASTNAME
 
-        MsgBox(String.Format("Welcome {0}, you login as {1} ", users.USERNAME, _
-                                users.ROLE & "", MsgBoxStyle.Information, "Login"))
+        MsgBox(String.Format("Welcome {0}, you login as {1} ", SysUser.USERNAME, _
+                                SysUser.ROLE & "", MsgBoxStyle.Information, "Login"))
 
-        frmMain.Show()
+        frmMain.Show() : frmMain.Enabled = True
         frmMain.NotYetLogin(False)
 
         Me.Close()
@@ -43,7 +44,7 @@
 
 
     Private Sub frmLogin_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.TopMost = True
+        Me.TopMost = True : frmMain.Enabled = False
         SysUser.CreateADMIN()
     End Sub
 
