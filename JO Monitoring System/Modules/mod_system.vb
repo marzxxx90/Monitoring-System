@@ -9,8 +9,12 @@ Module mod_system
     Public ADS_SHOW As Boolean = False
 
     Public CurrentDate As Date = Now
-    'Public POSuser As New ComputerUser
-    'Public UserID As Integer = POSuser.UserID
+    Public SysUser As New SystemUser
+    Public UType As String = ""
+    Public FullName As String = ""
+
+    Public UserID As Integer = SysUser.ID
+
     Public BranchCode As String = GetOption("BranchCode")
     Public branchName As String = GetOption("BranchName")
     Public AREACODE As String = GetOption("BranchArea")
@@ -21,13 +25,6 @@ Module mod_system
     Public backupPath As String = "."
 
     Friend advanceInterestDays As Integer = 30
-    Friend MaintainBal As Double = GetOption("MaintainingBalance")
-    Friend InitialBal As Double = GetOption("CurrentBalance")
-    Friend RepDep As Double = 0
-    Friend DollarRate As Double = 48
-    Friend DollarAllRate As Double
-    Friend RequirementLevel As Integer = 1
-    Friend dailyID As Integer = 1
 
     Friend TBLINT_HASH As String = ""
     Friend PAWN_JE As Boolean = False
