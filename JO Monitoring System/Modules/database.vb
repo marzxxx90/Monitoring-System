@@ -162,8 +162,8 @@ Friend Module database
     End Sub
 
 
-    Friend Function GetOption(ByVal strName As String) As String
-        Dim mySql As String = "SELECT * FROM tblmaintenance WHERE M_Name = '" & strName & "'"
+    Friend Function GetOption(ByVal keys As String) As String
+        Dim mySql As String = "SELECT * FROM tblMaintenance WHERE M_Keys = '" & keys & "'"
         Dim ret As String
         Try
             Dim ds As DataSet = LoadSQL(mySql)
