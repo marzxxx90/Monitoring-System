@@ -83,6 +83,8 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Employee.vb" />
+    <Compile Include="Class\JobOrder.vb" />
     <Compile Include="Class\SystemUser.vb" />
     <Compile Include="Forms\frmJobOrder.Designer.vb">
       <DependentUpon>frmJobOrder.vb</DependentUpon>
