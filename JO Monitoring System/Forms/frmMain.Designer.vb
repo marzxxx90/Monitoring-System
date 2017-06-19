@@ -22,59 +22,76 @@ Partial Class frmMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.dgSample = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        CType(Me.dgSample, System.ComponentModel.ISupportInitialize).BeginInit()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
+        Me.msMain = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MaintenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.msMain.SuspendLayout()
         Me.SuspendLayout()
         '
-        'dgSample
+        'msMain
         '
-        Me.dgSample.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgSample.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
-        Me.dgSample.Location = New System.Drawing.Point(12, 12)
-        Me.dgSample.Name = "dgSample"
-        Me.dgSample.Size = New System.Drawing.Size(570, 150)
-        Me.dgSample.TabIndex = 0
+        Me.msMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.MaintenanceToolStripMenuItem, Me.ToolsToolStripMenuItem, Me.ReportsToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.msMain.Location = New System.Drawing.Point(0, 0)
+        Me.msMain.Name = "msMain"
+        Me.msMain.Size = New System.Drawing.Size(995, 24)
+        Me.msMain.TabIndex = 1
+        Me.msMain.Text = "MenuStrip1"
         '
-        'Column1
+        'FileToolStripMenuItem
         '
-        Me.Column1.HeaderText = "ID"
-        Me.Column1.Name = "Column1"
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.FileToolStripMenuItem.Text = "File"
         '
-        'Column2
+        'MaintenanceToolStripMenuItem
         '
-        Me.Column2.HeaderText = "Name"
-        Me.Column2.Name = "Column2"
+        Me.MaintenanceToolStripMenuItem.Name = "MaintenanceToolStripMenuItem"
+        Me.MaintenanceToolStripMenuItem.Size = New System.Drawing.Size(88, 20)
+        Me.MaintenanceToolStripMenuItem.Text = "Maintenance"
         '
-        'Column3
+        'ToolsToolStripMenuItem
         '
-        Me.Column3.HeaderText = "Value"
-        Me.Column3.Name = "Column3"
+        Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(48, 20)
+        Me.ToolsToolStripMenuItem.Text = "Tools"
         '
-        'Column4
+        'ReportsToolStripMenuItem
         '
-        Me.Column4.HeaderText = "Remarks"
-        Me.Column4.Name = "Column4"
+        Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
+        Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
+        Me.ReportsToolStripMenuItem.Text = "Reports"
+        '
+        'HelpToolStripMenuItem
+        '
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
+        Me.HelpToolStripMenuItem.Text = "Help"
         '
         'frmMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(594, 265)
-        Me.Controls.Add(Me.dgSample)
+        Me.ClientSize = New System.Drawing.Size(995, 465)
+        Me.Controls.Add(Me.msMain)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MainMenuStrip = Me.msMain
         Me.Name = "frmMain"
         Me.Text = "Main Form"
-        CType(Me.dgSample, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.msMain.ResumeLayout(False)
+        Me.msMain.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
-    Friend WithEvents dgSample As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents msMain As System.Windows.Forms.MenuStrip
+    Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MaintenanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

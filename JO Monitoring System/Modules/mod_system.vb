@@ -1,22 +1,6 @@
-﻿' Changelog
-' v2 7/28/16
-'  - Added ExtractToExcel
-' v1.4 2/17/16
-'  - Log Module
-' v1.3 11/19/15
-'  - CommandPrompt Added
-' v1.2 11/6/15
-'  - Added ESK File
-' v1.1 10/20/15
-'  - Added decimal . in DigitOnly
-'  - Added isMoney
-
-Imports Microsoft.Office.Interop
+﻿Imports Microsoft.Office.Interop
 Module mod_system
-    ''' <summary>
-    ''' This region declare the neccessary variable in this system.
-    ''' </summary>
-    ''' <remarks></remarks>
+
 #Region "Global Variables"
     Dim frmCollection As New FormCollection()
     Public DEV_MODE As Boolean = False
@@ -115,11 +99,6 @@ Module mod_system
         Return Nothing
     End Function
 
-    ''' <summary>
-    ''' Function use to input only numbers
-    ''' </summary>
-    ''' <param name="e">Keypress Event</param>
-    ''' <remarks>Use the Keypress Event when calling this function</remarks>
     Friend Function DigitOnly(ByVal e As System.Windows.Forms.KeyPressEventArgs, Optional isWhole As Boolean = False)
         Console.WriteLine("char: " & e.KeyChar & " -" & Char.IsDigit(e.KeyChar))
         If e.KeyChar <> ControlChars.Back Then
@@ -134,12 +113,6 @@ Module mod_system
         Return Not (Char.IsDigit(e.KeyChar))
     End Function
 
-    ''' <summary>
-    ''' this function check if the input is numeric or character.
-    ''' </summary>
-    ''' <param name="txt">txt here hold the numeric value.</param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
     Friend Function checkNumeric(ByVal txt As TextBox) As Boolean
         If IsNumeric(txt.Text) Then
             Return True
@@ -159,11 +132,6 @@ Module mod_system
         Return str
     End Function
 
-    ''' <summary>
-    ''' Identify if the KeyPress is enter
-    ''' </summary>
-    ''' <param name="e">KeyPressEventArgs</param>
-    ''' <returns>Boolean</returns>
     Friend Function isEnter(ByVal e As KeyPressEventArgs) As Boolean
         If Asc(e.KeyChar) = 13 Then
             Return True
@@ -178,11 +146,6 @@ Module mod_system
         Return age
     End Function
 
-    ''' <summary>
-    ''' Use to verify entry
-    ''' </summary>
-    ''' <param name="txtBox">TextBox of the Money</param>
-    ''' <returns>Boolean</returns>
     Friend Function isMoney(ByVal txtBox As TextBox) As Boolean
         Dim isGood As Boolean = False
 
@@ -226,71 +189,6 @@ Module mod_system
         database.SaveEntry(ds, False)
         Console.WriteLine("SAP Account Changed")
     End Sub
-
-    ''' <summary>
-    ''' Extract Data from the database
-    ''' </summary>
-    ''' <param name="headers">Array of HEADERS</param>
-    ''' <param name="mySql">SQL Statement</param>
-    ''' <param name="dest">Excel File Destination</param>
-    ''' <remarks></remarks>
-    'Friend Sub ExtractToExcel(headers As String(), mySql As String, dest As String)
-    '    If dest = "" Then Exit Sub
-
-    '    Dim ds As DataSet = LoadSQL(mySql)
-
-    '    'Load Excel
-    '    Dim oXL As New Excel.Application
-    '    If oXL Is Nothing Then
-    '        MessageBox.Show("Excel is not properly installed!!")
-    '        Return
-    '    End If
-
-    '    Dim oWB As Excel.Workbook
-    '    Dim oSheet As Excel.Worksheet
-
-    '    oXL = CreateObject("Excel.Application")
-    '    oXL.Visible = False
-
-    '    oWB = oXL.Workbooks.Add
-    '    oSheet = oWB.ActiveSheet
-    '    oSheet.Name = ExtractDataFromDatabase.lbltransaction.Text
-
-    '    ' ADD BRANCHCODE
-    '    InsertArrayElement(headers, 0, "BRANCHCODE")
-
-    '    ' HEADERS
-    '    Dim cnt As Integer = 0
-    '    For Each hr In headers
-    '        cnt += 1 : oSheet.Cells(1, cnt).value = hr
-    '    Next
-
-    '    ' EXTRACTING
-    '    Console.Write("Extracting")
-    '    Dim rowCnt As Integer = 2
-    '    For Each dr As DataRow In ds.Tables(0).Rows
-    '        For colCnt As Integer = 0 To headers.Count - 1
-    '            If colCnt = 0 Then
-    '                oSheet.Cells(rowCnt, colCnt + 1).value = BranchCode
-    '            Else
-    '                oSheet.Cells(rowCnt, colCnt + 1).value = dr(colCnt - 1) 'dr(colCnt - 1) move the column by -1
-    '            End If
-    '        Next
-    '        rowCnt += 1
-
-    '        Console.Write(".")
-    '        Application.DoEvents()
-    '    Next
-
-    '    oWB.SaveAs(dest)
-    '    oSheet = Nothing
-    '    oWB.Close(False)
-    '    oWB = Nothing
-    '    oXL.Quit()
-    '    oXL = Nothing
-
-    '    Console.WriteLine("Data Extracted")
-    'End Sub
 
     Private Sub InsertArrayElement(Of T)( _
           ByRef sourceArray() As T, _

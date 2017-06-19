@@ -1,30 +1,22 @@
-﻿Imports System.Data.SqlClient
-''' <summary>
-''' This module declare the connection of the database.
-''' 
-''' </summary>
-''' <remarks></remarks>
+﻿Imports MySql.Data.MySqlClient
+
 Friend Module database
-    Public con As SqlConnection
-    Public ReaderCon As SqlConnection
-    Friend dbName As String = "C@TCHM3" 'Final
+    Public con As MySqlConnection
+    Public ReaderCon As MySqlConnection
+    Friend dbName As String = "J0C@TCH" 'Final
+    Friend dbServerName As String = "MISGwapohon-PC"
     Friend fbDataSet As New DataSet
     Friend conStr As String = String.Empty
-
 
 
     'Private DBversion As String = "1.3.3" 'Database version.
     Private language() As String = _
         {"Connection error failed."} 'verification if the database is connected.
-    ''' <summary>
-    ''' This method shows the connection string of a database.
-    ''' Also here we open the database.
-    ''' </summary>
-    ''' <remarks></remarks>
-    Public Sub dbOpen()
-        conStr = "Data Source=MISLAMION-PC\SQLEXPRESS;Initial Catalog=" & dbName & ";Integrated Security=True"
 
-        con = New SqlConnection(conStr)
+    Public Sub dbOpen()
+        conStr = "server=" & dbServerName & ";database=" & dbName & ";Uid=ellie;Pwd=ellie123;"
+
+        con = New MySqlConnection(conStr)
         Try
             con.Open()
         Catch ex As Exception
@@ -36,10 +28,7 @@ Friend Module database
         End Try
     End Sub
 
-    ''' <summary>
-    ''' This method is for closing after database was open here is the close.
-    ''' </summary>
-    ''' <remarks></remarks>
+
     Public Sub dbClose()
         con.Close()
     End Sub
@@ -61,13 +50,6 @@ Friend Module database
         Return ready
     End Function
 
-    ''' <summary>
-    ''' Module 001
-    ''' Save the Dataset to the database
-    ''' </summary>
-    ''' <param name="dsEntry">Database with Table Name as Database Table Name</param>
-    ''' <returns>Boolean: Success Result</returns>
-    ''' <remarks></remarks>
     Friend Function SaveEntry(ByVal dsEntry As DataSet, Optional ByVal isNew As Boolean = True) As Boolean
         If dsEntry Is Nothing Then
             Return False
@@ -75,7 +57,7 @@ Friend Module database
 
         dbOpen()
 
-        Dim da As SqlDataAdapter
+        Dim da As MySqlDataAdapter
         Dim ds As New DataSet, mySql As String, fillData As String
         ds = dsEntry
 
@@ -91,8 +73,8 @@ Friend Module database
                 Console.WriteLine("ModifySQL: " & mySql)
             End If
 
-            da = New SqlDataAdapter(mySql, con)
-            Dim cb As New SqlCommandBuilder(da) 'Required in Saving/Update to Database
+            da = New MySqlDataAdapter(mySql, con)
+            Dim cb As New MySqlCommandBuilder(da) 'Required in Saving/Update to Database
             da.Update(ds, fillData)
         Next
 
@@ -101,11 +83,11 @@ Friend Module database
     End Function
 
     Friend Sub SQLCommand(ByVal sql As String)
-        conStr = "Data Source=MISLAMION-PC\SQLEXPRESS;Initial Catalog=" & dbName & ";Integrated Security=True"
-        con = New SqlConnection(conStr)
+        conStr = "server=localhost;uid=blade; password=bladegamer; database=sample"
+        con = New MySqlConnection(conStr)
 
-        Dim cmd As SqlCommand
-        cmd = New SqlCommand(sql, con)
+        Dim cmd As MySqlCommand
+        cmd = New MySqlCommand(sql, con)
 
         Try
             con.Open()
@@ -121,16 +103,11 @@ Friend Module database
         System.Threading.Thread.Sleep(1000)
     End Sub
 
-    ''' <summary>
-    '''This function will check the compatibility of database version if it is match.
-    ''' </summary>
-    ''' <returns>return false if the database version is not match.</returns>
-    ''' <remarks></remarks>
     Friend Function DBCompatibilityCheck() As Boolean
         Console.WriteLine("Checking database compatibility...")
         Dim strDB As String = GetOption("DBVersion")
 
-        If DBversion = strDB Then
+        If DBVERSION = strDB Then
             Console.WriteLine("Success!")
             Return True
         Else
@@ -139,20 +116,13 @@ Friend Module database
         End If
     End Function
 
-    ''' <summary>
-    '''This function where the table load to dataset.
-    ''' </summary>
-    ''' <param name="mySql">mysql where the data pass by.</param>
-    ''' <param name="tblName">tblName here is a variable that hold the data.</param>
-    ''' <returns>return ds after reading the mysql data.</returns>
-    ''' <remarks></remarks>
     Friend Function LoadSQL(ByVal mySql As String, Optional ByVal tblName As String = "QuickSQL") As DataSet
         dbOpen() 'open the database.
 
-        Dim da As SqlDataAdapter
+        Dim da As MySqlDataAdapter
         Dim ds As New DataSet, fillData As String = tblName
         Try
-            da = New SqlDataAdapter(mySql, con)
+            da = New MySqlDataAdapter(mySql, con)
             da.Fill(ds, fillData)
         Catch ex As Exception
             Console.WriteLine(">>>>>" & mySql)
@@ -166,26 +136,17 @@ Friend Module database
         Return ds
     End Function
 
-    ''' <summary>
-    ''' This function is the declaration of odbccommand and odbcdatareader.
-    ''' </summary>
-    ''' <param name="mySql">mysql where the data pass</param>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
-    Friend Function LoadSQL_byDataReader(ByVal mySql As String) As SqlDataReader
-        Dim myCom As SqlCommand = New SqlCommand(mySql, ReaderCon)
-        Dim reader As SqlDataReader = myCom.ExecuteReader()
+    Friend Function LoadSQL_byDataReader(ByVal mySql As String) As MySqlDataReader
+        Dim myCom As MySqlCommand = New MySqlCommand(mySql, ReaderCon)
+        Dim reader As MySqlDataReader = myCom.ExecuteReader()
 
         Return reader
     End Function
-    ''' <summary>
-    ''' The conStr here a variable that hold the connectionstring of the database.
-    ''' </summary>
-    ''' <remarks></remarks>
-    Public Sub dbReaderOpen()
-        conStr = "Data Source=MISLAMION-PC\SQLEXPRESS;Initial Catalog=" & dbName & ";Integrated Security=True"
 
-        ReaderCon = New SqlConnection(conStr)
+    Public Sub dbReaderOpen()
+        conStr = "server=" & dbServerName & ";database=" & dbName & ";Uid=ellie;Pwd=ellie123;"
+
+        ReaderCon = New MySqlConnection(conStr)
         Try
             ReaderCon.Open() 'open the database.
         Catch ex As Exception
@@ -195,40 +156,25 @@ Friend Module database
             Exit Sub
         End Try
     End Sub
-    ''' <summary>
-    ''' close the database.
-    ''' </summary>
-    ''' <remarks></remarks>
+
     Public Sub dbReaderClose()
         ReaderCon.Close()
     End Sub
 
-    ''' <summary>
-    ''' This function select all data from tblmaintenance.
-    ''' </summary>
-    ''' <param name="keys">keys is the parameter </param>
-    ''' <returns>return ret after reading the dataset.</returns>
-    ''' <remarks></remarks>
-    Friend Function GetOption(ByVal keys As String) As String
-        Dim mySql As String = "SELECT * FROM tblmaintenance WHERE opt_keys = '" & keys & "'"
+
+    Friend Function GetOption(ByVal strName As String) As String
+        Dim mySql As String = "SELECT * FROM tblmaintenance WHERE M_Name = '" & strName & "'"
         Dim ret As String
         Try
             Dim ds As DataSet = LoadSQL(mySql)
-            ret = ds.Tables(0).Rows(0).Item("opt_values")
+            ret = ds.Tables(0).Rows(0).Item("M_Value")
         Catch ex As Exception
             ret = " "
         End Try
 
         Return ret
     End Function
-   
 
-    ''' <summary>
-    ''' This module where select all data from tblmaintenance.
-    ''' </summary>
-    ''' <param name="key">the key is parameter only data will be read if what is the opt_keys shows in key.</param>
-    ''' <param name="value">The value here hold the data from the opt_values.</param>
-    ''' <remarks></remarks>
     Friend Sub UpdateOptions(ByVal key As String, ByVal value As String, Optional ByVal OTPEnable As Boolean = False)
         Dim mySql As String = "SELECT * FROM tblMaintenance WHERE opt_keys = '" & key & "' AND opt_values = '" & value & "'"
         Dim ds As DataSet = LoadSQL(mySql, "tblMaintenance")
