@@ -22,6 +22,7 @@ Partial Class frmJobOrderList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"Collecting Cash", "For Party party", "Sam Apple", "Hoo Jun Maa", "Tratar De Cogerme", "05/16/2016", "05/16/2018", "RefNum# 101470", "Pending"}, -1)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
@@ -36,6 +37,7 @@ Partial Class frmJobOrderList
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnAdd = New System.Windows.Forms.Button()
+        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -77,9 +79,10 @@ Partial Class frmJobOrderList
         '
         'lvJobOrder
         '
-        Me.lvJobOrder.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8})
+        Me.lvJobOrder.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9})
         Me.lvJobOrder.FullRowSelect = True
         Me.lvJobOrder.GridLines = True
+        Me.lvJobOrder.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
         Me.lvJobOrder.Location = New System.Drawing.Point(12, 76)
         Me.lvJobOrder.Name = "lvJobOrder"
         Me.lvJobOrder.Size = New System.Drawing.Size(891, 268)
@@ -90,36 +93,37 @@ Partial Class frmJobOrderList
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Name"
+        Me.ColumnHeader1.Width = 113
         '
         'ColumnHeader2
         '
         Me.ColumnHeader2.Text = "Description"
-        Me.ColumnHeader2.Width = 206
+        Me.ColumnHeader2.Width = 197
         '
         'ColumnHeader3
         '
         Me.ColumnHeader3.Text = "Remarks"
-        Me.ColumnHeader3.Width = 76
+        Me.ColumnHeader3.Width = 59
         '
         'ColumnHeader4
         '
         Me.ColumnHeader4.Text = "Requestor"
-        Me.ColumnHeader4.Width = 129
+        Me.ColumnHeader4.Width = 112
         '
         'ColumnHeader5
         '
         Me.ColumnHeader5.Text = "In Charge"
-        Me.ColumnHeader5.Width = 121
+        Me.ColumnHeader5.Width = 106
         '
         'ColumnHeader6
         '
         Me.ColumnHeader6.Text = "Date"
-        Me.ColumnHeader6.Width = 95
+        Me.ColumnHeader6.Width = 69
         '
         'ColumnHeader7
         '
         Me.ColumnHeader7.Text = "Target Date"
-        Me.ColumnHeader7.Width = 98
+        Me.ColumnHeader7.Width = 76
         '
         'ColumnHeader8
         '
@@ -134,6 +138,10 @@ Partial Class frmJobOrderList
         Me.btnAdd.TabIndex = 6
         Me.btnAdd.Text = "&Add"
         Me.btnAdd.UseVisualStyleBackColor = True
+        '
+        'ColumnHeader9
+        '
+        Me.ColumnHeader9.Text = "Status"
         '
         'frmJobOrderList
         '
@@ -164,4 +172,5 @@ Partial Class frmJobOrderList
     Friend WithEvents ColumnHeader6 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader8 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader9 As System.Windows.Forms.ColumnHeader
 End Class

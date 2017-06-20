@@ -5,11 +5,12 @@
     End Sub
 
     Private Sub LoadJobOrder(Optional ByVal str As String = "")
+        lvJobOrder.Items.Clear()
         Dim mysql As String = String.Empty
         If str <> "" Then
             mysql = "Select * From tblJobOrder Where Upper(Name) like Upper('%" & str & "%') OR RefNo like '" & str & "'"
         Else
-            mysql = "Select FIRST 10 * From tblJobOrder"
+            mysql = "Select * From tblJobOrder Where Status <> 0 ORDER BY Date_Started Desc Limit 10"
         End If
         Dim ds As DataSet = LoadSQL(mysql, "tblJobOrder")
 
@@ -20,16 +21,24 @@
             Additem(Job)
         Next
     End Sub
+
     Private Sub Additem(ByVal JO As JobOrder)
         With JO
             Dim lv As ListViewItem = lvJobOrder.Items.Add(.Name)
             lv.SubItems.Add(.Description)
-            If .Remarks <> "" Then lv.SubItems.Add(.Remarks)
+            If .Remarks <> "" Then
+                lv.SubItems.Add(.Remarks)
+            Else
+                lv.SubItems.Add("")
+            End If
+
             lv.SubItems.Add(String.Format("{0} {1}" & IIf(.RequestBy.Suffix <> "", "," & .RequestBy.Suffix, ""), .RequestBy.FirstName, .RequestBy.LastName))
             lv.SubItems.Add(String.Format("{0} {1}" & IIf(.InCharge.Suffix <> "", "," & .InCharge.Suffix, ""), .InCharge.FirstName, .InCharge.LastName))
             lv.SubItems.Add(.DateStarted)
             lv.SubItems.Add(.DateTarget)
             lv.SubItems.Add(.RefNum)
+            lv.SubItems.Add(IIf(.Status = 1, "Pending", "Served"))
+            If .Status = 0 Then lv.BackColor = Color.Lime
         End With
     End Sub
 

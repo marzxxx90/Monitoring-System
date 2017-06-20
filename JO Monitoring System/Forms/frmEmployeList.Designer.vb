@@ -22,18 +22,19 @@ Partial Class frmEmployeList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"90", "Hoo Jun Maa", "Developer", "MIS"}, -1)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lvEmployee = New System.Windows.Forms.ListView()
-        Me.btnView = New System.Windows.Forms.Button()
-        Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnSelect = New System.Windows.Forms.Button()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.btnView = New System.Windows.Forms.Button()
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnSelect = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -78,12 +79,33 @@ Partial Class frmEmployeList
         Me.lvEmployee.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lvEmployee.FullRowSelect = True
         Me.lvEmployee.GridLines = True
+        Me.lvEmployee.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
         Me.lvEmployee.Location = New System.Drawing.Point(12, 76)
         Me.lvEmployee.Name = "lvEmployee"
         Me.lvEmployee.Size = New System.Drawing.Size(891, 268)
         Me.lvEmployee.TabIndex = 1
         Me.lvEmployee.UseCompatibleStateImageBehavior = False
         Me.lvEmployee.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "ID"
+        Me.ColumnHeader1.Width = 50
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Full Name"
+        Me.ColumnHeader2.Width = 224
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Job Description"
+        Me.ColumnHeader3.Width = 322
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Department"
+        Me.ColumnHeader4.Width = 296
         '
         'btnView
         '
@@ -111,26 +133,6 @@ Partial Class frmEmployeList
         Me.btnSelect.TabIndex = 4
         Me.btnSelect.Text = "S&elect"
         Me.btnSelect.UseVisualStyleBackColor = True
-        '
-        'ColumnHeader1
-        '
-        Me.ColumnHeader1.Text = "ID"
-        Me.ColumnHeader1.Width = 50
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "Full Name"
-        Me.ColumnHeader2.Width = 224
-        '
-        'ColumnHeader3
-        '
-        Me.ColumnHeader3.Text = "Job Description"
-        Me.ColumnHeader3.Width = 322
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "Department"
-        Me.ColumnHeader4.Width = 296
         '
         'frmEmployeList
         '

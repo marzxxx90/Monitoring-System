@@ -5,7 +5,6 @@ Imports System.Data.Odbc
 Public Class frmMain
 
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
-        JobOrderToolStripMenuItem.Enabled = Not st
         JOToolStrip.Enabled = Not st
 
 
