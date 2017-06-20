@@ -175,56 +175,23 @@ Friend Module database
         Return ret
     End Function
 
-    Friend Sub UpdateOptions(ByVal key As String, ByVal value As String, Optional ByVal OTPEnable As Boolean = False)
-        Dim mySql As String = "SELECT * FROM tblMaintenance WHERE opt_keys = '" & key & "' AND opt_values = '" & value & "'"
-        Dim ds As DataSet = LoadSQL(mySql, "tblMaintenance")
-        If OTPEnable = True Then
-            If ds.Tables("tblMaintenance").Rows.Count = 0 Then
-                Dim mod_name As String = ""
-                Select Case key
-                    Case "PawnLastNum"
-                        mod_name = "Pawning"
-                    Case "BorrowingLastNum"
-                        mod_name = "Borrowing"
-                    Case "InsuranceLastNum"
-                        mod_name = "Insurance"
-                    Case "ORLastNum"
-                        mod_name = "OR"
-                    Case "MEnumLast"
-                        mod_name = "ME"
-                    Case "MRNumLast"
-                        mod_name = "MR"
-                    Case Else
-                        mod_name = key
-                End Select
-                ' Dim NewOtp As New ClassOtp(mod_name, diagGeneralOTP.txtPIN.Text, "Old " & GetOption(key) & " New " & value, True)
-            End If
-        End If
-        mySql = "SELECT * FROM tblMaintenance WHERE opt_keys = '" & key & "'"
+    Friend Sub UpdateOptions(ByVal key As String, ByVal value As String)
+        Dim mySql As String = "SELECT * FROM tblMaintenance WHERE M_keys = '" & key & "'"
         Dim fillData As String = "tblMaintenance"
-        ds.Clear()
-        ds = LoadSQL(mySql, fillData)
+
+        Dim ds As DataSet = LoadSQL(mySql, fillData)
 
         If ds.Tables(fillData).Rows.Count = 0 Then
             Dim dsNewRow As DataRow
             dsNewRow = ds.Tables(fillData).NewRow
             With dsNewRow
-                .Item("opt_keys") = key
-                .Item("opt_values") = value
+                .Item("M_keys") = key
+                .Item("M_value") = value
             End With
             ds.Tables(fillData).Rows.Add(dsNewRow)
             SaveEntry(ds)
         Else
-            ds.Tables(0).Rows(0).Item("opt_values") = value
-            SaveEntry(ds, False)
-        End If
-
-        If key = "RevolvingFund" Then
-            mySql = "SELECT * FROM TBLCASH WHERE TRANSNAME = 'Revolving Fund'"
-            fillData = "tblCash"
-
-            ds = LoadSQL(mySql, fillData)
-            ds.Tables(fillData).Rows(0).Item("SAPACCOUNT") = value
+            ds.Tables(0).Rows(0).Item("M_value") = value
             SaveEntry(ds, False)
         End If
 

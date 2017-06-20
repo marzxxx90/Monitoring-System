@@ -25,7 +25,6 @@ Partial Class frmMain
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.msMain = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.JobOrderToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MaintenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -35,8 +34,8 @@ Partial Class frmMain
         Me.JOToolStrip = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsCurrentDate = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.msMain.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -54,16 +53,10 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.JobOrderToolStripMenuItem, Me.LoginToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoginToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
-        '
-        'JobOrderToolStripMenuItem
-        '
-        Me.JobOrderToolStripMenuItem.Name = "JobOrderToolStripMenuItem"
-        Me.JobOrderToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.JobOrderToolStripMenuItem.Text = "Job Order"
         '
         'LoginToolStripMenuItem
         '
@@ -140,19 +133,19 @@ Partial Class frmMain
         Me.StatusStrip1.TabIndex = 3
         Me.StatusStrip1.Text = "StatusStrip1"
         '
-        'tsUser
-        '
-        Me.tsUser.BackColor = System.Drawing.SystemColors.Highlight
-        Me.tsUser.Name = "tsUser"
-        Me.tsUser.Size = New System.Drawing.Size(77, 17)
-        Me.tsUser.Text = "No User yet"
-        '
         'tsCurrentDate
         '
         Me.tsCurrentDate.BackColor = System.Drawing.SystemColors.ControlLight
         Me.tsCurrentDate.Name = "tsCurrentDate"
         Me.tsCurrentDate.Size = New System.Drawing.Size(75, 17)
         Me.tsCurrentDate.Text = "Date no set"
+        '
+        'tsUser
+        '
+        Me.tsUser.BackColor = System.Drawing.SystemColors.Highlight
+        Me.tsUser.Name = "tsUser"
+        Me.tsUser.Size = New System.Drawing.Size(77, 17)
+        Me.tsUser.Text = "No User yet"
         '
         'frmMain
         '
@@ -185,7 +178,6 @@ Partial Class frmMain
     Friend WithEvents ToolsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReportsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents JobOrderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents JOToolStrip As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton

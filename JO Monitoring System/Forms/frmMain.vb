@@ -17,10 +17,6 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub JobOrderToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles JobOrderToolStripMenuItem.Click
-        frmJobOrder.Show()
-    End Sub
-
     Private Sub LoginToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoginToolStripMenuItem.Click
         frmLogin.Show()
     End Sub
@@ -37,5 +33,9 @@ Public Class frmMain
         End If
 
 
+    End Sub
+
+    Private Sub JOToolStrip_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles JOToolStrip.Click
+        frmJobOrderList.Show()
     End Sub
 End Class

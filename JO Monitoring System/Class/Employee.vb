@@ -118,7 +118,7 @@
             _fname = .Item("FNAME")
             If Not IsDBNull(.Item("MNAME")) Then _mname = .Item("MNAME")
             _lname = .Item("LNAME")
-            If Not IsDBNull(.Item(Suffix)) Then _suffix = .Item("SUFFIX")
+            If Not IsDBNull(.Item("SUFFIX")) Then _suffix = .Item("SUFFIX")
             If Not IsDBNull(.Item("JOB_DESCRIPTION")) Then _jobDescription = .Item("JOB_DESCRIPTION")
             _department = .Item("DEPARTMENT")
             _gender = .Item("GENDER")
