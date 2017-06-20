@@ -29,7 +29,7 @@
             Next
             mysql &= "ORDER BY LName ASC, FName ASC"
         Else
-            mysql = "Select * From tblEmployee"
+            mysql = "Select * From tblEmployee Limit 10"
         End If
         Dim ds As DataSet = LoadSQL(mysql, "tblEmployee")
 

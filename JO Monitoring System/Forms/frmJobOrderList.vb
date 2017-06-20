@@ -10,7 +10,7 @@
         If str <> "" Then
             mysql = "Select * From tblJobOrder Where Upper(Name) like Upper('%" & str & "%') OR RefNo like '" & str & "'"
         Else
-            mysql = "Select * From tblJobOrder Where Status <> 0 ORDER BY Date_Started Desc Limit 10"
+            mysql = "Select * From tblJobOrder Where Status = 1 ORDER BY Date_Started Desc Limit 10"
         End If
         Dim ds As DataSet = LoadSQL(mysql, "tblJobOrder")
 
@@ -20,12 +20,15 @@
             Job.LoadJobOrder()
             Additem(Job)
         Next
+
+        If str <> "" Then MsgBox(ds.Tables(0).Rows.Count & " Found!", MsgBoxStyle.Information, "Job Order")
     End Sub
 
     Private Sub Additem(ByVal JO As JobOrder)
         With JO
             Dim lv As ListViewItem = lvJobOrder.Items.Add(.Name)
             lv.SubItems.Add(.Description)
+
             If .Remarks <> "" Then
                 lv.SubItems.Add(.Remarks)
             Else
@@ -37,8 +40,18 @@
             lv.SubItems.Add(.DateStarted)
             lv.SubItems.Add(.DateTarget)
             lv.SubItems.Add(.RefNum)
-            lv.SubItems.Add(IIf(.Status = 1, "Pending", "Served"))
-            If .Status = 0 Then lv.BackColor = Color.Lime
+
+            Dim strStatus As String = String.Empty
+            If .Status = 1 Then
+                strStatus = "Pending"
+            ElseIf .Status = 2 Then
+                strStatus = "Cancel"
+            Else
+                strStatus = "Served"
+            End If
+            lv.SubItems.Add(strStatus)
+            If .Status = 0 Then lv.BackColor = ColorTranslator.FromHtml("#00ff00") 'Served
+            If .Status = 2 Then lv.BackColor = ColorTranslator.FromHtml("#ff0000") 'Cancel
         End With
     End Sub
 
