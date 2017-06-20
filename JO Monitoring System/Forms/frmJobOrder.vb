@@ -31,7 +31,7 @@
             .DateStarted = dtpFrom.Value
             .DateTarget = dtpTo.Value
             .RefNum = txtRefNum.Text
-            .Status = 1
+            .Status = "P"
             .NotifiyStatus = 0
             .SaveJobOrder()
         End With

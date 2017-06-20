@@ -10,7 +10,7 @@
         If str <> "" Then
             mysql = "Select * From tblJobOrder Where Upper(Name) like Upper('%" & str & "%') OR RefNo like '" & str & "'"
         Else
-            mysql = "Select * From tblJobOrder Where Status = 1 ORDER BY Date_Started Desc Limit 10"
+            mysql = "Select * From tblJobOrder Where Status = 'P' ORDER BY Date_Started Desc Limit 10"
         End If
         Dim ds As DataSet = LoadSQL(mysql, "tblJobOrder")
 
@@ -42,16 +42,17 @@
             lv.SubItems.Add(.RefNum)
 
             Dim strStatus As String = String.Empty
-            If .Status = "P" Then
-                strStatus = "Pending"
-            ElseIf .Status = "C" Then
-                strStatus = "Cancel"
-            Else
-                strStatus = "Served"
-            End If
+            Select Case .Status
+                Case "P"
+                    strStatus = "Pending"
+                Case "S"
+                    strStatus = "Served"
+                    lv.BackColor = ColorTranslator.FromHtml("#00ff00") 'Served
+                Case "C"
+                    strStatus = "Cancel"
+                    lv.BackColor = ColorTranslator.FromHtml("#ff0000") 'Cancel
+            End Select
             lv.SubItems.Add(strStatus)
-            If .Status = 0 Then lv.BackColor = ColorTranslator.FromHtml("#00ff00") 'Served
-            If .Status = 2 Then lv.BackColor = ColorTranslator.FromHtml("#ff0000") 'Cancel
         End With
     End Sub
 
