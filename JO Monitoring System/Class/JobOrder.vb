@@ -92,12 +92,12 @@
         End Set
     End Property
 
-    Private _status As Integer
-    Public Property Status() As Integer
+    Private _status As String
+    Public Property Status() As String
         Get
             Return _status
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As String)
             _status = value
         End Set
     End Property
@@ -127,7 +127,7 @@
             If _remarks <> "" Then .Item("Remarks") = _remarks
             .Item("Assignee") = _inCharge.ID
             .Item("Requestor") = _requestBy.ID
-            .Item("Date_Stated") = _dateStarted
+            .Item("Date_Started") = _dateStarted
             .Item("Date_Target") = _dateTarget
             .Item("RefNo") = _refnum
             .Item("Status") = _status
@@ -137,7 +137,7 @@
         database.SaveEntry(ds)
     End Sub
 
-    Private Sub LoadJobOrder()
+    Friend Sub LoadJobOrder()
         Dim mysql As String = "Select * From tblJobOrder Where Joid = " & _id
         Dim ds As DataSet = LoadSQL(mysql, "tblJobOrder")
 

@@ -86,10 +86,22 @@
     <Compile Include="Class\Employee.vb" />
     <Compile Include="Class\JobOrder.vb" />
     <Compile Include="Class\SystemUser.vb" />
+    <Compile Include="Forms\frmEmployeList.Designer.vb">
+      <DependentUpon>frmEmployeList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEmployeList.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmJobOrder.Designer.vb">
       <DependentUpon>frmJobOrder.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmJobOrder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmJobOrderList.Designer.vb">
+      <DependentUpon>frmJobOrderList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmJobOrderList.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmLogin.Designer.vb">
@@ -111,7 +123,14 @@
     <Compile Include="Forms\frmsettings.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmUserManagement.Designer.vb">
+      <DependentUpon>frmUserManagement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmUserManagement.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modules\database.vb" />
+    <Compile Include="Modules\formSwitch.vb" />
     <Compile Include="Modules\mod_system.vb" />
     <Compile Include="Modules\security.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -131,8 +150,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmEmployeList.resx">
+      <DependentUpon>frmEmployeList.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmJobOrder.resx">
       <DependentUpon>frmJobOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmJobOrderList.resx">
+      <DependentUpon>frmJobOrderList.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
@@ -142,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmsettings.resx">
       <DependentUpon>frmsettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmUserManagement.resx">
+      <DependentUpon>frmUserManagement.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

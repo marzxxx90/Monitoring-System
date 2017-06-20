@@ -51,4 +51,10 @@
     Private Sub btnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExit.Click
         End
     End Sub
+
+    Private Sub txtuserpass_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtuserpass.KeyPress
+        If isEnter(e) Then
+            btnLogin.PerformClick()
+        End If
+    End Sub
 End Class
