@@ -92,12 +92,12 @@
         End Set
     End Property
 
-    Private _status As Integer
-    Public Property Status() As Integer
+    Private _status As String
+    Public Property Status() As String
         Get
             Return _status
         End Get
-        Set(ByVal value As Integer)
+        Set(ByVal value As String)
             _status = value
         End Set
     End Property

@@ -42,9 +42,9 @@
             lv.SubItems.Add(.RefNum)
 
             Dim strStatus As String = String.Empty
-            If .Status = 1 Then
+            If .Status = "P" Then
                 strStatus = "Pending"
-            ElseIf .Status = 2 Then
+            ElseIf .Status = "C" Then
                 strStatus = "Cancel"
             Else
                 strStatus = "Served"
