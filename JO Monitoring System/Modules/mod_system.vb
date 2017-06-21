@@ -2,33 +2,12 @@
 Module mod_system
 
 #Region "Global Variables"
-    Dim frmCollection As New FormCollection()
-    Public DEV_MODE As Boolean = False
-    Public PROTOTYPE As Boolean = False
-    Public ADS_ESKIE As Boolean = False
-    Public ADS_SHOW As Boolean = False
-
     Public CurrentDate As Date = Now
     Public SysUser As New SystemUser
     Public UType As String = ""
     Public FullName As String = ""
 
     Public UserID As Integer = SysUser.ID
-
-    Public BranchCode As String = GetOption("BranchCode")
-    Public branchName As String = GetOption("BranchName")
-    Public AREACODE As String = GetOption("BranchArea")
-    Public REVOLVING_FUND As String = GetOption("RevolvingFund")
-    'Public OTPDisable As Boolean = IIf(GetOption("OTP") = "YES", True, False)
-
-    Friend isAuthorized As Boolean = False
-    Public backupPath As String = "."
-
-    Friend advanceInterestDays As Integer = 30
-
-    Friend TBLINT_HASH As String = ""
-    Friend PAWN_JE As Boolean = False
-    Friend DBVERSION As String = ""
 #End Region
 
     Public Function CommandPrompt(ByVal app As String, ByVal args As String) As String
@@ -143,16 +122,6 @@ Module mod_system
         Return age
     End Function
 
-    Friend Function isMoney(ByVal txtBox As TextBox) As Boolean
-        Dim isGood As Boolean = False
-
-        If Double.TryParse(txtBox.Text, 0.0) Then
-            isGood = True
-        End If
-
-        Return isGood
-    End Function
-
     Friend Function GetFirstDate(ByVal curDate As Date) As Date
         Dim firstDay = DateSerial(curDate.Year, curDate.Month, 1)
         Return firstDay
@@ -164,28 +133,6 @@ Module mod_system
 
         Return lastOfMonth
     End Function
-
-    Friend Function GetSAPAccount(TransName As String) As String
-        Dim mySql As String, ds As DataSet
-        mySql = String.Format("SELECT * FROM TBLCASH WHERE TransName = '{0}'", TransName)
-
-        ds = LoadSQL(mySql)
-
-        Return ds.Tables(0).Rows(0).Item("SAPACCOUNT")
-    End Function
-
-    Friend Sub UpdateSAPAccount(TRANS As String, VALUE As String)
-        Dim mySql As String, fillData As String = "TBLCASH"
-        mySql = "SELECT * FROM " & fillData
-        mySql &= String.Format(" WHERE TRANSNAME = '{0}'", TRANS)
-        '"REMARKS LIKE '%{0}%'", srcStr)
-        Dim ds As DataSet = LoadSQL(mySql, fillData)
-        ds = LoadSQL(mySql, fillData)
-
-        ds.Tables(fillData).Rows(0).Item("SAPACCOUNT") = VALUE
-        database.SaveEntry(ds, False)
-        Console.WriteLine("SAP Account Changed")
-    End Sub
 
     Private Sub InsertArrayElement(Of T)( _
           ByRef sourceArray() As T, _
