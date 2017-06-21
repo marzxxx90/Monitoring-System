@@ -27,15 +27,15 @@ Partial Class frmUserManagement
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.txtUsername = New System.Windows.Forms.TextBox()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.txtFirstname = New System.Windows.Forms.TextBox()
+        Me.txtCpassword = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.txtMiddlename = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.txtLname = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
@@ -83,33 +83,35 @@ Partial Class frmUserManagement
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Password"
         '
-        'TextBox1
+        'txtUsername
         '
-        Me.TextBox1.Location = New System.Drawing.Point(103, 108)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(185, 21)
-        Me.TextBox1.TabIndex = 3
+        Me.txtUsername.Location = New System.Drawing.Point(103, 108)
+        Me.txtUsername.Name = "txtUsername"
+        Me.txtUsername.Size = New System.Drawing.Size(185, 21)
+        Me.txtUsername.TabIndex = 3
         '
-        'TextBox2
+        'txtPassword
         '
-        Me.TextBox2.Location = New System.Drawing.Point(104, 144)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(185, 21)
-        Me.TextBox2.TabIndex = 4
+        Me.txtPassword.Location = New System.Drawing.Point(104, 144)
+        Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.Size = New System.Drawing.Size(185, 21)
+        Me.txtPassword.TabIndex = 4
+        Me.txtPassword.UseSystemPasswordChar = True
         '
-        'TextBox3
+        'txtFirstname
         '
-        Me.TextBox3.Location = New System.Drawing.Point(103, 13)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(186, 21)
-        Me.TextBox3.TabIndex = 8
+        Me.txtFirstname.Location = New System.Drawing.Point(103, 13)
+        Me.txtFirstname.Name = "txtFirstname"
+        Me.txtFirstname.Size = New System.Drawing.Size(186, 21)
+        Me.txtFirstname.TabIndex = 8
         '
-        'TextBox4
+        'txtCpassword
         '
-        Me.TextBox4.Location = New System.Drawing.Point(128, 177)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(159, 21)
-        Me.TextBox4.TabIndex = 7
+        Me.txtCpassword.Location = New System.Drawing.Point(128, 177)
+        Me.txtCpassword.Name = "txtCpassword"
+        Me.txtCpassword.Size = New System.Drawing.Size(159, 21)
+        Me.txtCpassword.TabIndex = 7
+        Me.txtCpassword.UseSystemPasswordChar = True
         '
         'Label3
         '
@@ -129,12 +131,12 @@ Partial Class frmUserManagement
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "Confirm Password"
         '
-        'TextBox5
+        'txtMiddlename
         '
-        Me.TextBox5.Location = New System.Drawing.Point(103, 43)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(186, 21)
-        Me.TextBox5.TabIndex = 10
+        Me.txtMiddlename.Location = New System.Drawing.Point(103, 43)
+        Me.txtMiddlename.Name = "txtMiddlename"
+        Me.txtMiddlename.Size = New System.Drawing.Size(186, 21)
+        Me.txtMiddlename.TabIndex = 10
         '
         'Label5
         '
@@ -145,12 +147,12 @@ Partial Class frmUserManagement
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Middlename"
         '
-        'TextBox6
+        'txtLname
         '
-        Me.TextBox6.Location = New System.Drawing.Point(103, 74)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(186, 21)
-        Me.TextBox6.TabIndex = 12
+        Me.txtLname.Location = New System.Drawing.Point(103, 74)
+        Me.txtLname.Name = "txtLname"
+        Me.txtLname.Size = New System.Drawing.Size(186, 21)
+        Me.txtLname.TabIndex = 12
         '
         'Label6
         '
@@ -186,16 +188,18 @@ Partial Class frmUserManagement
         Me.GroupBox1.Controls.Add(Me.btnAdd)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.TextBox6)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.txtLname)
+        Me.GroupBox1.Controls.Add(Me.txtUsername)
         Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
-        Me.GroupBox1.Controls.Add(Me.TextBox5)
+        Me.GroupBox1.Controls.Add(Me.txtPassword)
+        Me.GroupBox1.Controls.Add(Me.txtMiddlename)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label5)
-        Me.GroupBox1.Controls.Add(Me.TextBox4)
-        Me.GroupBox1.Controls.Add(Me.TextBox3)
-        Me.GroupBox1.Location = New System.Drawing.Point(278, 5)
+
+        Me.GroupBox1.Controls.Add(Me.txtCpassword)
+        Me.GroupBox1.Controls.Add(Me.txtFirstname)
+        Me.GroupBox1.Location = New System.Drawing.Point(294, 19)
+
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(312, 278)
         Me.GroupBox1.TabIndex = 15
@@ -222,15 +226,15 @@ Partial Class frmUserManagement
     Friend WithEvents lvUserlist As System.Windows.Forms.ListView
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents txtUsername As System.Windows.Forms.TextBox
+    Friend WithEvents txtPassword As System.Windows.Forms.TextBox
+    Friend WithEvents txtFirstname As System.Windows.Forms.TextBox
+    Friend WithEvents txtCpassword As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents txtMiddlename As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents txtLname As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
