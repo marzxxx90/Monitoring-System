@@ -94,7 +94,6 @@
 
         If ds.Tables(0).Rows.Count >= 1 Then
             Exit Sub
-
         Else
 
             Dim dsNewRow As DataRow
@@ -114,11 +113,26 @@
 
     End Sub
 
-    Friend Sub saveuser(ByVal id As Integer)
+    Friend Sub saveuser(Optional ByVal id As Integer = 0)
         mysql = "SELECT * FROM " & tblLogin & " WHERE USERID = " & id
         Dim ds As DataSet = LoadSQL(mysql, tblLogin)
 
         If ds.Tables(0).Rows.Count = 1 Then
+          
+            With ds.Tables(tblLogin).Rows(0)
+                .Item("USERNAME") = _USERNAME
+                .Item("USERPASS") = EncryptString(_USERPASS)
+                .Item("FNAME") = _FIRSTNAME
+                .Item("MNAME") = _MIDDLENAME
+                .Item("LNAME") = _LASTNAME
+                .Item("ROLE") = _ROLE
+                .Item("STATUS") = 1
+            End With
+          
+            database.SaveEntry(ds, False) : Console.WriteLine("User account udated.")
+
+        Else
+
             Dim dsNewrow As DataRow
             dsNewrow = ds.Tables(0).NewRow
             With dsNewrow
@@ -130,20 +144,11 @@
                 .Item("ROLE") = _ROLE
                 .Item("STATUS") = 1
             End With
-            ds.Tables(0).Rows.Add(dsNewrow)
-            database.SaveEntry(ds, False) : Console.WriteLine("User account saved.")
 
-        Else
-            With ds.Tables(0).Rows(0)
-                .Item("USERNAME") = _USERNAME
-                .Item("USERPASS") = EncryptString(_USERPASS)
-                .Item("FNAME") = _FIRSTNAME
-                .Item("MNAME") = _MIDDLENAME
-                .Item("LNAME") = _LASTNAME
-                .Item("ROLE") = _ROLE
-                .Item("STATUS") = 1
-            End With
-            database.SaveEntry(ds) : Console.WriteLine("User account udated.")
+            ds.Tables(tblLogin).Rows.Add(dsNewrow)
+            database.SaveEntry(ds) : Console.WriteLine("User account saved.")
+
+
         End If
     End Sub
 
@@ -182,5 +187,27 @@
 
         Console.WriteLine("USERID :" & _ID)
     End Sub
+
+
+    Friend Function IsUsernameExists(ByVal username As String) As Boolean
+        mysql = "SELECT * FROM " & tblLogin & " WHERE upper(USERNAME) = upper('" & username & "')"
+        Dim ds As DataSet = LoadSQL(mysql, tblLogin)
+
+        If ds.Tables(tblLogin).Rows.Count >= 1 Then Return False
+
+        Return True
+    End Function
+
+
+    Friend Function IsUserpassExists(ByVal userpass As String) As Boolean
+        mysql = "SELECT * FROM " & tblLogin & " WHERE USERPASS = '" & EncryptString(userpass) & "'"
+        Dim ds As DataSet = LoadSQL(mysql, tblLogin)
+
+        Console.WriteLine("Hash " & EncryptString(userpass))
+        If ds.Tables(tblLogin).Rows.Count >= 1 Then Return False
+
+        Return True
+    End Function
+
 #End Region
 End Class
