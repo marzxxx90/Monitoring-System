@@ -86,6 +86,12 @@
     <Compile Include="Class\Employee.vb" />
     <Compile Include="Class\JobOrder.vb" />
     <Compile Include="Class\SystemUser.vb" />
+    <Compile Include="Forms\frmEmploye.Designer.vb">
+      <DependentUpon>frmEmploye.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEmploye.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmEmployeList.Designer.vb">
       <DependentUpon>frmEmployeList.vb</DependentUpon>
     </Compile>
@@ -150,6 +156,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmEmploye.resx">
+      <DependentUpon>frmEmploye.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEmployeList.resx">
       <DependentUpon>frmEmployeList.vb</DependentUpon>
     </EmbeddedResource>

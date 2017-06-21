@@ -5,7 +5,8 @@ Imports System.Data.Odbc
 Public Class frmMain
 
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
-        JOToolStrip.Enabled = Not st
+        tsJobOrder.Enabled = Not st
+        tsEmployee.Enabled = Not st
 
 
         If st Then
@@ -34,7 +35,11 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub JOToolStrip_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles JOToolStrip.Click
+    Private Sub tsJobOrder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsJobOrder.Click
         frmJobOrderList.Show()
+    End Sub
+
+    Private Sub stEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsEmployee.Click
+        frmEmployeList.Show()
     End Sub
 End Class
