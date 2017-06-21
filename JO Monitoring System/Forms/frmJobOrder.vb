@@ -40,8 +40,11 @@
         UpdateOptions("REFNO", RefNum)
 
         MsgBox("Job Order " & JobOrder.Name & " Successfully Saved!", MsgBoxStyle.Information, "Job Order")
-  
-        Me.Close()
+        If MsgBox("Do you want to add new Job Order?", MsgBoxStyle.YesNo, "Job Order") = MsgBoxResult.Yes Then
+            ClearFields()
+        Else
+            Me.Close()
+        End If
     End Sub
 
     Private Sub btnRequestBy_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRequestBy.Click
