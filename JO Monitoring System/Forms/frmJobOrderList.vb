@@ -53,6 +53,7 @@
                     lv.BackColor = ColorTranslator.FromHtml("#ff0000") 'Cancel
             End Select
             lv.SubItems.Add(strStatus)
+            lv.Tag = .ID
         End With
     End Sub
 
@@ -68,5 +69,19 @@
         If isEnter(e) Then
             btnSearch.PerformClick()
         End If
+    End Sub
+
+    Private Sub lvJobOrder_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvJobOrder.DoubleClick
+        btnSelect.PerformClick()
+    End Sub
+
+    Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
+        If lvJobOrder.SelectedItems.Count = 0 Then Exit Sub
+
+        Dim Jo As New JobOrder
+        Jo.ID = lvJobOrder.FocusedItem.Tag
+        Jo.LoadJobOrder()
+        diagUpdateJO.LoadJobOrder(Jo)
+        diagUpdateJO.Show()
     End Sub
 End Class
