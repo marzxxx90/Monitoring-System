@@ -7,6 +7,7 @@ Public Class frmMain
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
         JOToolStrip.Enabled = Not st
         UserManagementToolStripMenuItem.Enabled = Not st
+        tsViewcOmment.Enabled = Not st
 
         If Not st Then
             LoginToolStripMenuItem.Text = "&Log Out"
@@ -65,5 +66,9 @@ Public Class frmMain
             frmUserManagement.Show() : Exit Sub
         End If
         MsgBox("You don't have persmision in this module!", MsgBoxStyle.Critical, "Error")
+    End Sub
+
+    Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsViewcOmment.Click
+        frmViewComments.Show()
     End Sub
 End Class

@@ -26,17 +26,17 @@ Partial Class frmMain
         Me.msMain = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UserManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MaintenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.JOToolStrip = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.tsViewcOmment = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.tsCurrentDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.UserManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.msMain.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -62,8 +62,14 @@ Partial Class frmMain
         'LoginToolStripMenuItem
         '
         Me.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem"
-        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.LoginToolStripMenuItem.Text = "&Log Out"
+        '
+        'UserManagementToolStripMenuItem
+        '
+        Me.UserManagementToolStripMenuItem.Name = "UserManagementToolStripMenuItem"
+        Me.UserManagementToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.UserManagementToolStripMenuItem.Text = "User &Management"
         '
         'ToolsToolStripMenuItem
         '
@@ -75,7 +81,7 @@ Partial Class frmMain
         'MaintenanceToolStripMenuItem
         '
         Me.MaintenanceToolStripMenuItem.Name = "MaintenanceToolStripMenuItem"
-        Me.MaintenanceToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.MaintenanceToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
         Me.MaintenanceToolStripMenuItem.Text = "Maintenance"
         '
         'ReportsToolStripMenuItem
@@ -96,7 +102,7 @@ Partial Class frmMain
         Me.ToolStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ToolStrip1.GripMargin = New System.Windows.Forms.Padding(2, 10, 10, 10)
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.JOToolStrip, Me.ToolStripButton2})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.JOToolStrip, Me.tsViewcOmment})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 24)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.Size = New System.Drawing.Size(1161, 62)
@@ -114,14 +120,13 @@ Partial Class frmMain
         Me.JOToolStrip.Size = New System.Drawing.Size(100, 40)
         Me.JOToolStrip.Text = "Job Order"
         '
-        'ToolStripButton2
+        'tsViewcOmment
         '
-        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
-        Me.ToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.Size = New System.Drawing.Size(24, 59)
-        Me.ToolStripButton2.Text = "ToolStripButton2"
+        Me.tsViewcOmment.Image = CType(resources.GetObject("tsViewcOmment.Image"), System.Drawing.Image)
+        Me.tsViewcOmment.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsViewcOmment.Name = "tsViewcOmment"
+        Me.tsViewcOmment.Size = New System.Drawing.Size(113, 59)
+        Me.tsViewcOmment.Text = "View Comment"
         '
         'StatusStrip1
         '
@@ -148,12 +153,6 @@ Partial Class frmMain
         Me.tsUser.Name = "tsUser"
         Me.tsUser.Size = New System.Drawing.Size(77, 17)
         Me.tsUser.Text = "No User yet"
-        '
-        'UserManagementToolStripMenuItem
-        '
-        Me.UserManagementToolStripMenuItem.Name = "UserManagementToolStripMenuItem"
-        Me.UserManagementToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.UserManagementToolStripMenuItem.Text = "User &Management"
         '
         'frmMain
         '
@@ -187,7 +186,7 @@ Partial Class frmMain
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStrip1 As System.Windows.Forms.ToolStrip
     Friend WithEvents JOToolStrip As System.Windows.Forms.ToolStripButton
-    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents tsViewcOmment As System.Windows.Forms.ToolStripButton
     Friend WithEvents LoginToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents tsUser As System.Windows.Forms.ToolStripStatusLabel
