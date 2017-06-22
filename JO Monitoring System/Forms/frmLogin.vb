@@ -45,7 +45,6 @@
 
     Private Sub frmLogin_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.TopMost = True : frmMain.Enabled = False
-        SysUser.CreateADMIN()
     End Sub
 
     Private Sub btnExit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExit.Click

@@ -140,6 +140,7 @@
 
     Private Sub frmUserManagement_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         load_listUser()
+        SysUser.CreateADMIN()
     End Sub
 
 
