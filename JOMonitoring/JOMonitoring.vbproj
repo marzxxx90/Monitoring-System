@@ -73,6 +73,7 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Comments.vb" />
     <Compile Include="Class\Employee.vb" />
     <Compile Include="Class\JobOrder.vb" />
     <Compile Include="frmJOMonitoring.vb">
@@ -83,6 +84,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\database.vb" />
+    <Compile Include="Module\frmComments.Designer.vb">
+      <DependentUpon>frmComments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Module\frmComments.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\mod_system.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -103,6 +110,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmJOMonitoring.resx">
       <DependentUpon>frmJOMonitoring.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Module\frmComments.resx">
+      <DependentUpon>frmComments.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

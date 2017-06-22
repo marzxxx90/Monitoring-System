@@ -41,7 +41,8 @@ Partial Class frmJOMonitoring
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnComments = New System.Windows.Forms.Button()
+        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -121,7 +122,7 @@ Partial Class frmJOMonitoring
         '
         'lvJobOrder
         '
-        Me.lvJobOrder.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9})
+        Me.lvJobOrder.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader10, Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9})
         Me.lvJobOrder.FullRowSelect = True
         Me.lvJobOrder.GridLines = True
         Me.lvJobOrder.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
@@ -177,21 +178,26 @@ Partial Class frmJOMonitoring
         Me.ColumnHeader9.Text = "Status"
         Me.ColumnHeader9.Width = 114
         '
-        'Button1
+        'btnComments
         '
-        Me.Button1.Location = New System.Drawing.Point(810, 364)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(105, 41)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "&Comment"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnComments.Location = New System.Drawing.Point(810, 364)
+        Me.btnComments.Name = "btnComments"
+        Me.btnComments.Size = New System.Drawing.Size(105, 41)
+        Me.btnComments.TabIndex = 6
+        Me.btnComments.Text = "&Comment"
+        Me.btnComments.UseVisualStyleBackColor = True
+        '
+        'ColumnHeader10
+        '
+        Me.ColumnHeader10.Text = "#"
+        Me.ColumnHeader10.Width = 0
         '
         'frmJOMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(929, 410)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnComments)
         Me.Controls.Add(Me.lvJobOrder)
         Me.Controls.Add(Me.GroupBox2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -221,6 +227,7 @@ Partial Class frmJOMonitoring
     Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader8 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader9 As System.Windows.Forms.ColumnHeader
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnComments As System.Windows.Forms.Button
+    Friend WithEvents ColumnHeader10 As System.Windows.Forms.ColumnHeader
 
 End Class

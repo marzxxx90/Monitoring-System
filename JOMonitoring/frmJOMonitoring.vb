@@ -3,7 +3,6 @@
     Dim JO As JobOrder
     Dim ds As DataSet
 
-
     Private Sub btnSearch_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSearch.Click
         SEARCH()
     End Sub
@@ -94,7 +93,8 @@
         If JOlist.ID = 0 Then Exit Sub
 
 
-        Dim lv As ListViewItem = lvJobOrder.Items.Add(JOlist.Name)
+        Dim lv As ListViewItem = lvJobOrder.Items.Add(JOlist.ID)
+        lv.SubItems.Add(JOlist.Name)
         lv.SubItems.Add(JOlist.Description)
         lv.SubItems.Add(JOlist.Remarks)
 
@@ -141,9 +141,15 @@
 
     End Sub
 
-    Private Sub chkServed_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkServed.CheckedChanged
+    Private Sub btnComments_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnComments.Click
+        If lvJobOrder.SelectedItems.Count = 0 Then Exit Sub
 
+        Me.Enabled = False
+        frmComments.JOID = lvJobOrder.FocusedItem.Text
+        frmComments.Show()
     End Sub
 
-
+    Private Sub lvJobOrder_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvJobOrder.DoubleClick
+        btnComments.PerformClick()
+    End Sub
 End Class
