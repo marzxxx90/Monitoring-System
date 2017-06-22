@@ -15,22 +15,15 @@
         Dim strWords As String() = secured_str.Split(New Char() {" "c})
 
         If txtFilter.Text <> "" Then
-            Dim mysql As String = "Select J.*, "
-            mysql &= " CONCAT(E.FNAME,' ',E.MNAME,' ',E.LNAME) as Fullname "
-            mysql &= " From tblJobOrder J INNER JOIN TBLEMPLOYEE E"
-            mysql &= " ON J.ASSIGNEE = E.EMP_ID INNER JOIN TBLEMPLOYEE EN "
-            mysql &= " ON J.REQUESTOR = EN.EMP_ID"
-            mysql &= " WHERE "
+            Dim mysql As String = "Select * FROM JO_LIST WHERE"
 
             If IsDate(secured_str) Then
                 mysql &= " J.DATE_TARGET = '" & CDate(secured_str).ToString("yyyy/MM/dd") & "' OR"
             End If
 
             For Each Name In strWords
-
-                mysql &= vbCr & " UPPER(Fullname) LIKE UPPER('%" & name & "%') and "
                 If Name Is strWords.Last Then
-                    mysql &= vbCr & " UPPER(Fullname) LIKE UPPER('%" & name & "%') OR"
+                    mysql &= vbCr & " UPPER(REQUESTORS) LIKE UPPER('%" & name & "%') OR"
                     Exit For
                 End If
             Next
@@ -52,13 +45,13 @@
                 mysql &= " OR J.STATUS = 'C'"
             End If
 
-            ds = LoadSQL(mysql, "tblJobOrder")
+            ds = LoadSQL(mysql, "JO_LIST")
 
             Else
-            Dim mysql As String = "Select * From tblJobOrder WHERE " & _
+            Dim mysql As String = "Select * From JO_LIST WHERE " & _
                              " DATE_TARGET = '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' AND " & _
                              "STATUS ='P'"
-                ds = LoadSQL(mysql, "tblJobOrder")
+            ds = LoadSQL(mysql, "JO_LIST")
             End If
 
             If ds.Tables(0).Rows.Count = 0 Then Console.WriteLine("Found nothing.", MsgBoxStyle.Information, "Count") : Exit Sub
