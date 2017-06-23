@@ -33,7 +33,7 @@
 
         frmMain.Show() : frmMain.Enabled = True
         frmMain.NotYetLogin(False)
-
+        frmMain.dateSet = True
         Me.Close()
     End Sub
 

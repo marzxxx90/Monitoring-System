@@ -10,7 +10,7 @@
         Dim mysql As String = String.Empty
         If str <> "" Then
             mysql = "Select * From tblJobOrder Where Upper(Name) like Upper('%" & str & "%') OR RefNo like '%" & str & "%'" & _
-                    " OR Description like '%" & str & "%'"
+                    " OR Description like '%" & str & "%' ORDER BY Date_Started Desc"
         Else
             mysql = "Select * From tblJobOrder Where Status = 'P' ORDER BY Date_Started Desc Limit 10"
         End If
@@ -84,9 +84,24 @@
         If lvJobOrder.SelectedItems.Count = 0 Then Exit Sub
 
         Dim idx As Integer = lvJobOrder.FocusedItem.Tag
-        '   job = New Comments
+        Dim jo As New JobOrder
 
-        cm.VAultCOmment(idx)
+        jo.ID = idx
+        jo.LoadJobOrder()
+
+        For Each com As Comments In jo.CommentCollect
+            With com
+
+                cm = New Comments
+                cm.VAultCOmment(.ID)
+                frmViewComments.AddItem(cm)
+                cm.UpdateComments(.ID)
+
+            End With
+        Next
+
+        LoadJobOrder()
+        frmViewComments.Show()
     End Sub
 
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click

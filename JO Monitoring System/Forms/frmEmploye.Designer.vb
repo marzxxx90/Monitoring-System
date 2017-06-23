@@ -23,6 +23,11 @@ Partial Class frmEmploye
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtJobDescription = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.cboGender = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.txtSuffix = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtLastName = New System.Windows.Forms.TextBox()
@@ -31,20 +36,15 @@ Partial Class frmEmploye
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txtFirstName = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.cboGender = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.txtJobDescription = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.txtDepartment = New System.Windows.Forms.TextBox()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
+        Me.cboDepartment = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.txtDepartment)
+        Me.GroupBox1.Controls.Add(Me.cboDepartment)
         Me.GroupBox1.Controls.Add(Me.Label7)
         Me.GroupBox1.Controls.Add(Me.txtJobDescription)
         Me.GroupBox1.Controls.Add(Me.Label6)
@@ -64,6 +64,52 @@ Partial Class frmEmploye
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Employee Info"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(10, 304)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(62, 13)
+        Me.Label7.TabIndex = 11
+        Me.Label7.Text = "Department"
+        '
+        'txtJobDescription
+        '
+        Me.txtJobDescription.Location = New System.Drawing.Point(96, 218)
+        Me.txtJobDescription.Multiline = True
+        Me.txtJobDescription.Name = "txtJobDescription"
+        Me.txtJobDescription.Size = New System.Drawing.Size(252, 67)
+        Me.txtJobDescription.TabIndex = 10
+        Me.txtJobDescription.Text = "Developer"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(10, 221)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(80, 13)
+        Me.Label6.TabIndex = 9
+        Me.Label6.Text = "Job Description"
+        '
+        'cboGender
+        '
+        Me.cboGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cboGender.FormattingEnabled = True
+        Me.cboGender.Items.AddRange(New Object() {"Male", "Female"})
+        Me.cboGender.Location = New System.Drawing.Point(96, 177)
+        Me.cboGender.Name = "cboGender"
+        Me.cboGender.Size = New System.Drawing.Size(173, 21)
+        Me.cboGender.TabIndex = 1
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(10, 180)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(42, 13)
+        Me.Label5.TabIndex = 8
+        Me.Label5.Text = "Gender"
         '
         'txtSuffix
         '
@@ -133,60 +179,6 @@ Partial Class frmEmploye
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "First Name"
         '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(10, 180)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(42, 13)
-        Me.Label5.TabIndex = 8
-        Me.Label5.Text = "Gender"
-        '
-        'cboGender
-        '
-        Me.cboGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cboGender.FormattingEnabled = True
-        Me.cboGender.Items.AddRange(New Object() {"Male", "Female"})
-        Me.cboGender.Location = New System.Drawing.Point(96, 177)
-        Me.cboGender.Name = "cboGender"
-        Me.cboGender.Size = New System.Drawing.Size(173, 21)
-        Me.cboGender.TabIndex = 1
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(10, 221)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(80, 13)
-        Me.Label6.TabIndex = 9
-        Me.Label6.Text = "Job Description"
-        '
-        'txtJobDescription
-        '
-        Me.txtJobDescription.Location = New System.Drawing.Point(96, 218)
-        Me.txtJobDescription.Multiline = True
-        Me.txtJobDescription.Name = "txtJobDescription"
-        Me.txtJobDescription.Size = New System.Drawing.Size(252, 67)
-        Me.txtJobDescription.TabIndex = 10
-        Me.txtJobDescription.Text = "Developer"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(10, 304)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(62, 13)
-        Me.Label7.TabIndex = 11
-        Me.Label7.Text = "Department"
-        '
-        'txtDepartment
-        '
-        Me.txtDepartment.Location = New System.Drawing.Point(96, 301)
-        Me.txtDepartment.Name = "txtDepartment"
-        Me.txtDepartment.Size = New System.Drawing.Size(252, 20)
-        Me.txtDepartment.TabIndex = 12
-        Me.txtDepartment.Text = "MIS"
-        '
         'btnCancel
         '
         Me.btnCancel.Location = New System.Drawing.Point(285, 357)
@@ -205,6 +197,16 @@ Partial Class frmEmploye
         Me.btnSave.Text = "&Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
+        'cboDepartment
+        '
+        Me.cboDepartment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.cboDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboDepartment.FormattingEnabled = True
+        Me.cboDepartment.Location = New System.Drawing.Point(96, 301)
+        Me.cboDepartment.Name = "cboDepartment"
+        Me.cboDepartment.Size = New System.Drawing.Size(252, 21)
+        Me.cboDepartment.TabIndex = 12
+        '
         'frmEmploye
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -214,6 +216,7 @@ Partial Class frmEmploye
         Me.Controls.Add(Me.btnCancel)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frmEmploye"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Registration Form"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
@@ -229,7 +232,6 @@ Partial Class frmEmploye
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents txtFirstName As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents txtDepartment As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents txtJobDescription As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
@@ -237,4 +239,5 @@ Partial Class frmEmploye
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents btnCancel As System.Windows.Forms.Button
     Friend WithEvents btnSave As System.Windows.Forms.Button
+    Friend WithEvents cboDepartment As System.Windows.Forms.ComboBox
 End Class

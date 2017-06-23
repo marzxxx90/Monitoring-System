@@ -49,6 +49,7 @@ Partial Class frmcomment1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.SystemColors.ActiveBorder
         Me.ClientSize = New System.Drawing.Size(423, 344)
         Me.Controls.Add(Me.btnCLose)
         Me.Controls.Add(Me.txtComments)
