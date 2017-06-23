@@ -22,6 +22,9 @@
             With dr
                 Dim lv As ListViewItem = LvComment.Items.Add(.Item("JOID"))
                 lv.SubItems.Add(.Item("Comments"))
+                If .Item("Status") = 1 Then
+                    lv.ImageKey = "Message"
+                End If
             End With
         Next
 

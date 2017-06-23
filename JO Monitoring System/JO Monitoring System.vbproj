@@ -83,6 +83,8 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Comments.vb" />
+    <Compile Include="Class\Comment_Collect.vb" />
     <Compile Include="Class\Employee.vb" />
     <Compile Include="Class\JobOrder.vb" />
     <Compile Include="Class\SystemUser.vb" />

@@ -1,4 +1,5 @@
 ﻿Public Class frmJobOrderList
+    Private cm As Comments
 
     Private Sub frmJobOrderList_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         LoadJobOrder()
@@ -8,7 +9,8 @@
         lvJobOrder.Items.Clear()
         Dim mysql As String = String.Empty
         If str <> "" Then
-            mysql = "Select * From tblJobOrder Where Upper(Name) like Upper('%" & str & "%') OR RefNo like '" & str & "'"
+            mysql = "Select * From tblJobOrder Where Upper(Name) like Upper('%" & str & "%') OR RefNo like '%" & str & "%'" & _
+                    " OR Description like '%" & str & "%'"
         Else
             mysql = "Select * From tblJobOrder Where Status = 'P' ORDER BY Date_Started Desc Limit 10"
         End If
@@ -17,14 +19,16 @@
         For Each dr In ds.Tables(0).Rows
             Dim Job As New JobOrder
             Job.ID = dr.item("JOID")
+            cm = New Comments
+            cm.loadbyID(dr.item("JOID"))
             Job.LoadJobOrder()
-            Additem(Job)
+            Additem(Job, cm)
         Next
 
         If str <> "" Then MsgBox(ds.Tables(0).Rows.Count & " Found!", MsgBoxStyle.Information, "Job Order")
     End Sub
 
-    Private Sub Additem(ByVal JO As JobOrder)
+    Private Sub Additem(ByVal JO As JobOrder, ByVal Cm As Comments)
         With JO
             Dim lv As ListViewItem = lvJobOrder.Items.Add(.Name)
             lv.SubItems.Add(.Description)
@@ -52,7 +56,12 @@
                     strStatus = "Cancel"
                     lv.BackColor = ColorTranslator.FromHtml("#ff0000") 'Cancel
             End Select
+
+            If Cm.Status = 1 Then
+                lv.ImageKey = "Message"
+            End If
             lv.SubItems.Add(strStatus)
+            lv.Tag = .ID
         End With
     End Sub
 
@@ -69,4 +78,14 @@
             btnSearch.PerformClick()
         End If
     End Sub
+
+    Private Sub lvJobOrder_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvJobOrder.DoubleClick
+        If lvJobOrder.SelectedItems.Count = 0 Then Exit Sub
+
+        Dim idx As Integer = lvJobOrder.FocusedItem.Tag
+        '   job = New Comments
+
+        cm.VAultCOmment(idx)
+    End Sub
+
 End Class
