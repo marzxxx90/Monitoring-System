@@ -143,7 +143,6 @@
         SysUser.CreateADMIN()
     End Sub
 
-
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
         If btnAdd.Text = "&Add" Then
             If Not IsValid() Then Exit Sub
@@ -157,4 +156,5 @@
         End If
 
     End Sub
+
 End Class

@@ -112,6 +112,17 @@
         End Set
     End Property
 
+    Private _commentCollect As Comment_Collect
+    Public Property CommentCollect() As Comment_Collect
+        Get
+            Return _commentCollect
+        End Get
+        Set(ByVal value As Comment_Collect)
+            _commentCollect = value
+        End Set
+    End Property
+
+
 #End Region
 
 #Region "Procedures"
@@ -141,8 +152,13 @@
         Dim mysql As String = "Select * From tblJobOrder Where Joid = " & _id
         Dim ds As DataSet = LoadSQL(mysql, "tblJobOrder")
 
+
+        _commentCollect = New Comment_Collect
         For Each dr In ds.Tables(0).Rows
             LoadbyRows(dr)
+            Dim cm As New Comments
+            cm.VAultCOmment(dr.item("JOid"))
+            _commentCollect.Add(cm)
         Next
     End Sub
 
@@ -164,6 +180,9 @@
             _refnum = .Item("RefNo")
             _status = .Item("Status")
             _notifiyStatus = .Item("NotifyStatus")
+
+
+
         End With
 
     End Sub

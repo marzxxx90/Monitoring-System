@@ -8,7 +8,6 @@ Public Class frmMain
 
         tsJobOrder.Enabled = Not st
         tsEmployee.Enabled = Not st
-
         UserManagementToolStripMenuItem.Enabled = Not st
 
 
@@ -64,11 +63,9 @@ Public Class frmMain
         frmJobOrderList.Show()
     End Sub
 
-
-    Private Sub stEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsEmployee.Click
+    Private Sub stEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         frmEmployeList.Show()
-
-	End Sub
+    End Sub
 
     Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
         If SysUser.ROLE = "Admin" Then
@@ -77,4 +74,5 @@ Public Class frmMain
         MsgBox("You don't have persmision in this module!", MsgBoxStyle.Critical, "Error")
 
     End Sub
+
 End Class
