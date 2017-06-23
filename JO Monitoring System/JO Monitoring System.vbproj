@@ -83,9 +83,35 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Comments.vb" />
+    <Compile Include="Class\Comment_Collect.vb" />
     <Compile Include="Class\Employee.vb" />
     <Compile Include="Class\JobOrder.vb" />
     <Compile Include="Class\SystemUser.vb" />
+    <Compile Include="Forms\diagUpdateJO.Designer.vb">
+      <DependentUpon>diagUpdateJO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\diagUpdateJO.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmabout.Designer.vb">
+      <DependentUpon>frmabout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmabout.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmcomment1.Designer.vb">
+      <DependentUpon>frmcomment1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmcomment1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmEmploye.Designer.vb">
+      <DependentUpon>frmEmploye.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEmploye.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmEmployeList.Designer.vb">
       <DependentUpon>frmEmployeList.vb</DependentUpon>
     </Compile>
@@ -129,6 +155,12 @@
     <Compile Include="Forms\frmUserManagement.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmViewComments.Designer.vb">
+      <DependentUpon>frmViewComments.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmViewComments.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Modules\database.vb" />
     <Compile Include="Modules\formSwitch.vb" />
     <Compile Include="Modules\mod_system.vb" />
@@ -150,6 +182,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\diagUpdateJO.resx">
+      <DependentUpon>diagUpdateJO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmabout.resx">
+      <DependentUpon>frmabout.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmcomment1.resx">
+      <DependentUpon>frmcomment1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEmploye.resx">
+      <DependentUpon>frmEmploye.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEmployeList.resx">
       <DependentUpon>frmEmployeList.vb</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmUserManagement.resx">
       <DependentUpon>frmUserManagement.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmViewComments.resx">
+      <DependentUpon>frmViewComments.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

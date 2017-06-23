@@ -10,7 +10,7 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("JO Monitoring System")> 
 <Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyCompany("PGC")> 
 <Assembly: AssemblyProduct("JO Monitoring System")> 
 <Assembly: AssemblyCopyright("Copyright ©  2017")> 
 <Assembly: AssemblyTrademark("")> 

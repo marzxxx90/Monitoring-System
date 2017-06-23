@@ -8,8 +8,6 @@ Friend Module database
     Friend fbDataSet As New DataSet
     Friend conStr As String = String.Empty
 
-
-    'Private DBversion As String = "1.3.3" 'Database version.
     Private language() As String = _
         {"Connection error failed."} 'verification if the database is connected.
 
@@ -28,15 +26,10 @@ Friend Module database
         End Try
     End Sub
 
-
     Public Sub dbClose()
         con.Close()
     End Sub
-    ''' <summary>
-    ''' The database is ready to open.
-    ''' </summary>
-    ''' <returns>return false if the database is not ready.</returns>
-    ''' <remarks></remarks>
+
     Friend Function isReady() As Boolean
         Dim ready As Boolean = False
         Try
@@ -102,19 +95,6 @@ Friend Module database
 
         System.Threading.Thread.Sleep(1000)
     End Sub
-
-    Friend Function DBCompatibilityCheck() As Boolean
-        Console.WriteLine("Checking database compatibility...")
-        Dim strDB As String = GetOption("DBVersion")
-
-        If DBVERSION = strDB Then
-            Console.WriteLine("Success!")
-            Return True
-        Else
-            Console.WriteLine("Database Version didn't match... " & strDB)
-            Return False
-        End If
-    End Function
 
     Friend Function LoadSQL(ByVal mySql As String, Optional ByVal tblName As String = "QuickSQL") As DataSet
         dbOpen() 'open the database.

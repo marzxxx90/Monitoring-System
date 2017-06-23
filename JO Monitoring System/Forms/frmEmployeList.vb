@@ -34,17 +34,30 @@
         Dim ds As DataSet = LoadSQL(mysql, "tblEmployee")
 
         For Each dr In ds.Tables(0).Rows
-            Additem(dr)
+            Dim emp As New Employee
+            emp.ID = dr.item("Emp_ID")
+            emp.LoadEmployee()
+            Additem(emp)
         Next
         If str <> "" Then MsgBox(ds.Tables(0).Rows.Count & " Found!", MsgBoxStyle.Information, "Employee")
     End Sub
 
-    Private Sub Additem(ByVal dr As DataRow)
-        With dr
-            Dim lv As ListViewItem = lvEmployee.Items.Add(.Item("Emp_ID"))
-            lv.SubItems.Add(String.Format("{0}, {1} {2}", .Item("LName"), .Item("FName"), .Item("Mname")))
-            If Not IsDBNull(.Item("Job_Description")) Then lv.SubItems.Add(.Item("Job_Description"))
-            lv.SubItems.Add("Department")
+    Private Sub Additem(ByVal emp As Employee)
+        With emp
+            Dim lv As ListViewItem = lvEmployee.Items.Add(.ID)
+            lv.SubItems.Add(String.Format("{0}, {1} {2}", .LastName, .FirstName, .MiddleName))
+            If .JobDescription <> "" Then
+                lv.SubItems.Add(.JobDescription)
+            Else
+                lv.SubItems.Add("")
+            End If
+
+            If emp.Gender = 0 Then
+                lv.ImageKey = "imgFemale"
+            Else
+                lv.ImageKey = "imgMale"
+            End If
+            lv.SubItems.Add(.Department)
 
         End With
     End Sub
@@ -55,15 +68,15 @@
         frmOrig = frmOrigin
     End Sub
 
-    Private Sub lvEmployee_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvEmployee.DoubleClick
-        If Not fromOtherForm Then
-            btnView.PerformClick()
-        Else
-            btnSelect.PerformClick()
-        End If
-    End Sub
+    'Private Sub lvEmployee_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvEmployee.DoubleClick
+    '    If Not fromOtherForm Then
+    '        btnView.PerformClick()
+    '    Else
+    '        btnSelect.PerformClick()
+    '    End If
+    'End Sub
 
-    Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
+    Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If lvEmployee.Items.Count = 0 Then Exit Sub
 
         Dim idx As Integer = CInt(lvEmployee.FocusedItem.Text)
@@ -80,5 +93,9 @@
         If isEnter(e) Then
             btnSearch.PerformClick()
         End If
+    End Sub
+
+    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+        frmEmploye.Show()
     End Sub
 End Class

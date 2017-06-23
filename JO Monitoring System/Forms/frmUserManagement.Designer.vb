@@ -48,9 +48,9 @@ Partial Class frmUserManagement
         Me.lvUserlist.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
         Me.lvUserlist.FullRowSelect = True
         Me.lvUserlist.GridLines = True
-        Me.lvUserlist.Location = New System.Drawing.Point(14, 28)
+        Me.lvUserlist.Location = New System.Drawing.Point(12, 12)
         Me.lvUserlist.Name = "lvUserlist"
-        Me.lvUserlist.Size = New System.Drawing.Size(258, 318)
+        Me.lvUserlist.Size = New System.Drawing.Size(258, 271)
         Me.lvUserlist.TabIndex = 0
         Me.lvUserlist.UseCompatibleStateImageBehavior = False
         Me.lvUserlist.View = System.Windows.Forms.View.Details
@@ -165,7 +165,7 @@ Partial Class frmUserManagement
         '
         'btnAdd
         '
-        Me.btnAdd.Location = New System.Drawing.Point(58, 235)
+        Me.btnAdd.Location = New System.Drawing.Point(51, 220)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(87, 27)
         Me.btnAdd.TabIndex = 13
@@ -174,7 +174,7 @@ Partial Class frmUserManagement
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(173, 235)
+        Me.btnCancel.Location = New System.Drawing.Point(166, 220)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(87, 27)
         Me.btnCancel.TabIndex = 14
@@ -199,7 +199,7 @@ Partial Class frmUserManagement
         Me.GroupBox1.Controls.Add(Me.txtFirstname)
         Me.GroupBox1.Location = New System.Drawing.Point(294, 19)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(312, 278)
+        Me.GroupBox1.Size = New System.Drawing.Size(300, 264)
         Me.GroupBox1.TabIndex = 15
         Me.GroupBox1.TabStop = False
         '
@@ -208,7 +208,7 @@ Partial Class frmUserManagement
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange
-        Me.ClientSize = New System.Drawing.Size(627, 365)
+        Me.ClientSize = New System.Drawing.Size(602, 290)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lvUserlist)
         Me.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
