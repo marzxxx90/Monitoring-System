@@ -89,8 +89,6 @@
         cm.VAultCOmment(idx)
     End Sub
 
-
-
     Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
         If lvJobOrder.SelectedItems.Count = 0 Then Exit Sub
 
@@ -100,5 +98,4 @@
         diagUpdateJO.LoadJobOrder(Jo)
         diagUpdateJO.Show()
     End Sub
-
 End Class
