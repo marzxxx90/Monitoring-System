@@ -8,9 +8,7 @@ Public Class frmMain
 
         tsJobOrder.Enabled = Not st
         tsEmployee.Enabled = Not st
-
         UserManagementToolStripMenuItem.Enabled = Not st
-        tsViewcOmment.Enabled = Not st
 
 
         If Not st Then
@@ -65,11 +63,9 @@ Public Class frmMain
         frmJobOrderList.Show()
     End Sub
 
-
-    Private Sub stEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsEmployee.Click
+    Private Sub stEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         frmEmployeList.Show()
-
-	End Sub
+    End Sub
 
     Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
         If SysUser.ROLE = "Admin" Then
@@ -79,7 +75,4 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsViewcOmment.Click
-        frmViewComments.Show()
-    End Sub
 End Class

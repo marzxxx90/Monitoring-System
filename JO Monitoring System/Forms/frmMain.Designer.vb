@@ -26,18 +26,16 @@ Partial Class frmMain
         Me.msMain = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoginToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UserManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MaintenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsJobOrder = New System.Windows.Forms.ToolStripButton()
-        Me.tsEmployee = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
-
-        Me.UserManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-
+        Me.tsEmployee = New System.Windows.Forms.ToolStripButton()
         Me.msMain.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -63,8 +61,14 @@ Partial Class frmMain
         'LoginToolStripMenuItem
         '
         Me.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem"
-        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LoginToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.LoginToolStripMenuItem.Text = "&Log Out"
+        '
+        'UserManagementToolStripMenuItem
+        '
+        Me.UserManagementToolStripMenuItem.Name = "UserManagementToolStripMenuItem"
+        Me.UserManagementToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.UserManagementToolStripMenuItem.Text = "User &Management"
         '
         'ToolsToolStripMenuItem
         '
@@ -76,7 +80,7 @@ Partial Class frmMain
         'MaintenanceToolStripMenuItem
         '
         Me.MaintenanceToolStripMenuItem.Name = "MaintenanceToolStripMenuItem"
-        Me.MaintenanceToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.MaintenanceToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
         Me.MaintenanceToolStripMenuItem.Text = "Maintenance"
         '
         'ReportsToolStripMenuItem
@@ -115,17 +119,6 @@ Partial Class frmMain
         Me.tsJobOrder.Size = New System.Drawing.Size(100, 40)
         Me.tsJobOrder.Text = "Job Order"
         '
-        'tsEmployee
-        '
-        Me.tsEmployee.AutoSize = False
-        Me.tsEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.tsEmployee.Image = CType(resources.GetObject("tsEmployee.Image"), System.Drawing.Image)
-        Me.tsEmployee.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsEmployee.Margin = New System.Windows.Forms.Padding(3, 1, 0, 2)
-        Me.tsEmployee.Name = "tsEmployee"
-        Me.tsEmployee.Size = New System.Drawing.Size(100, 40)
-        Me.tsEmployee.Text = "Employee"
-        '
         'StatusStrip1
         '
         Me.StatusStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -145,11 +138,16 @@ Partial Class frmMain
         Me.tsUser.Size = New System.Drawing.Size(77, 17)
         Me.tsUser.Text = "No User yet"
         '
-        'UserManagementToolStripMenuItem
+        'tsEmployee
         '
-        Me.UserManagementToolStripMenuItem.Name = "UserManagementToolStripMenuItem"
-        Me.UserManagementToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.UserManagementToolStripMenuItem.Text = "User &Management"
+        Me.tsEmployee.AutoSize = False
+        Me.tsEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.tsEmployee.Image = CType(resources.GetObject("tsEmployee.Image"), System.Drawing.Image)
+        Me.tsEmployee.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsEmployee.Margin = New System.Windows.Forms.Padding(3, 1, 0, 2)
+        Me.tsEmployee.Name = "tsEmployee"
+        Me.tsEmployee.Size = New System.Drawing.Size(100, 40)
+        Me.tsEmployee.Text = "Employee"
         '
         'frmMain
         '
@@ -188,9 +186,9 @@ Partial Class frmMain
     Friend WithEvents tsUser As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents MaintenanceToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
-    Friend WithEvents tsEmployee As System.Windows.Forms.ToolStripButton
 
     Friend WithEvents UserManagementToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tsEmployee As System.Windows.Forms.ToolStripButton
 
 
 End Class

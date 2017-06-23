@@ -155,8 +155,4 @@
     Private Sub frmUserManagement_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         load_listUser()
     End Sub
-
-    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
-
-    End Sub
 End Class
