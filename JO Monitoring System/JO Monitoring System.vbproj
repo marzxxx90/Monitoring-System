@@ -94,6 +94,12 @@
     <Compile Include="Forms\frmcomment1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmEmploye.Designer.vb">
+      <DependentUpon>frmEmploye.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEmploye.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmEmployeList.Designer.vb">
       <DependentUpon>frmEmployeList.vb</DependentUpon>
     </Compile>
@@ -166,6 +172,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\frmcomment1.resx">
       <DependentUpon>frmcomment1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmEmploye.resx">
+      <DependentUpon>frmEmploye.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEmployeList.resx">
       <DependentUpon>frmEmployeList.vb</DependentUpon>

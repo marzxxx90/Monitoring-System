@@ -5,9 +5,11 @@ Imports System.Data.Odbc
 Public Class frmMain
 
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
-        JOToolStrip.Enabled = Not st
+
+        tsJobOrder.Enabled = Not st
+        tsEmployee.Enabled = Not st
         UserManagementToolStripMenuItem.Enabled = Not st
-        tsViewcOmment.Enabled = Not st
+
 
         If Not st Then
             LoginToolStripMenuItem.Text = "&Log Out"
@@ -57,8 +59,12 @@ Public Class frmMain
 
     End Sub
 
-    Private Sub JOToolStrip_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles JOToolStrip.Click
+    Private Sub tsJobOrder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsJobOrder.Click
         frmJobOrderList.Show()
+    End Sub
+
+    Private Sub stEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        frmEmployeList.Show()
     End Sub
 
     Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
@@ -66,9 +72,7 @@ Public Class frmMain
             frmUserManagement.Show() : Exit Sub
         End If
         MsgBox("You don't have persmision in this module!", MsgBoxStyle.Critical, "Error")
+
     End Sub
 
-    Private Sub ToolStripButton2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsViewcOmment.Click
-        frmViewComments.Show()
-    End Sub
 End Class

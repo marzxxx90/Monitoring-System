@@ -85,7 +85,7 @@
 #End Region
 
 #Region "Procedures"
-    Private Sub SaveEmployee()
+    Friend Sub SaveEmployee()
         Dim mysql As String = "Select * From tblEmployee"
         Dim ds As DataSet = LoadSQL(mysql, "tblEmployee")
         Dim dsNewRow As DataRow
