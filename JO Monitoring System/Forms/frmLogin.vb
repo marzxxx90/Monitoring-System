@@ -40,6 +40,7 @@
     Private Sub Clearfield()
         txtusername.Text = ""
         txtuserpass.Text = ""
+        txtusername.Focus()
     End Sub
 
 
