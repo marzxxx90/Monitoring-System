@@ -12,6 +12,8 @@
     Private Sub JobOrderStatus()
         Dim st As Date = GetFirstDate(monCal.SelectionStart)
         Dim en As Date = GetLastDate(monCal.SelectionEnd)
+        st = CDate(st.ToShortDateString).ToString("yyyy/MM/dd")
+        en = CDate(en.ToShortDateString).ToString("yyyy/MM/dd")
         Dim dsName As String = "dsJobOrderStatus", mySql As String = String.Empty, strStatus As String = String.Empty
 
         Select Case cboType.Text
@@ -24,15 +26,29 @@
         End Select
 
         If FormType = Type.Daily Then
-            mySql = "Select * From tblJobOrder Where Status = '" & strStatus & "' "
+            mySql = "Select J.Joid, J.Name, J.Description, J.Remarks, "
+            mySql &= "Concat(EA.FNAME, ' ',EA.LNAME) as Assignee, "
+            mySql &= "Concat(ER.FNAME,' ', ER.LNAME) as Requestor, "
+            mySql &= "J.Date_Started, J.Date_Target, J.RefNo, J.Status "
+            mySql &= "From tblJobOrder J "
+            mySql &= "Inner Join tblemployee AS EA ON EA.EMP_ID = J.ASSIGNEE "
+            mySql &= "Inner Join tblemployee AS ER ON ER.EMP_ID = J.REQUESTOR "
+            mySql &= "Where Status = '" & strStatus & "' "
             If rbStartedDate.Checked Then
-                mySql &= "And Date_Started = '" & CDate(st.ToShortDateString).ToString("yyyy/MM/dd") & "'"
+                mySql &= "And Date_Started = '" & CDate(monCal.SelectionStart.ToShortDateString).ToString("yyyy/MM/dd") & "'"
             ElseIf rbTargetDate.Checked Then
-                mySql &= "And Date_Target = '" & CDate(st.ToShortDateString).ToString("yyyy/MM/dd") & "'"
+                mySql &= "And Date_Target = '" & CDate(monCal.SelectionStart.ToShortDateString).ToString("yyyy/MM/dd") & "'"
             End If
 
         Else
-            mySql = "Select * From tblJobOrder Where Status = '" & strStatus & "' "
+            mySql = "Select J.Joid, J.Name, J.Description, J.Remarks, "
+            mySql &= "Concat(EA.FNAME, ' ',EA.LNAME) as Assignee, "
+            mySql &= "Concat(ER.FNAME,' ', ER.LNAME) as Requestor, "
+            mySql &= "J.Date_Started, J.Date_Target, J.RefNo, J.Status "
+            mySql &= "From tblJobOrder J "
+            mySql &= "Inner Join tblemployee AS EA ON EA.EMP_ID = J.ASSIGNEE "
+            mySql &= "Inner Join tblemployee AS ER ON ER.EMP_ID = J.REQUESTOR "
+            mySql &= "Where Status = '" & strStatus & "' "
             If rbStartedDate.Checked Then
                 mySql &= "And Date_Started Between '" & st & "' and '" & en & "'"
             ElseIf rbTargetDate.Checked Then

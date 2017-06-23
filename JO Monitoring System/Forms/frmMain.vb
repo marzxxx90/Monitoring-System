@@ -96,6 +96,7 @@ Public Class frmMain
         frmReportStatus.FormType = frmReportStatus.Type.Monthly
         frmReportStatus.Show()
 
+    End Sub
     Private Sub tsEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsEmployee.Click
         frmEmploye.Show()
     End Sub

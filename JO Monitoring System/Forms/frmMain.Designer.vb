@@ -161,7 +161,7 @@ Partial Class frmMain
         Me.tsUser.Size = New System.Drawing.Size(77, 17)
         Me.tsUser.Text = "No User yet"
         '
-<<<<<<< HEAD
+
         'DailyToolStripMenuItem
         '
         Me.DailyToolStripMenuItem.Name = "DailyToolStripMenuItem"
