@@ -2,10 +2,12 @@
     Dim mysql As String
     Dim ds As DataSet
 
-    Private Sub frmViewComments_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        loadcomments()
+    Friend Sub AddItem(ByVal cm As Comments)
+        With cm
+            Dim lv As ListViewItem = LvComment.Items.Add(.JOID)
+            lv.SubItems.Add(.Comments)
+        End With
     End Sub
-
     Private Sub loadcomments()
         If txtSearch.Text = "" Then
             mysql = "Select * from tblcomments ORDER BY DATE_CREATED DESC LIMIT 30"

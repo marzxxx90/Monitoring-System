@@ -156,9 +156,13 @@
         _commentCollect = New Comment_Collect
         For Each dr In ds.Tables(0).Rows
             LoadbyRows(dr)
-            Dim cm As New Comments
-            cm.VAultCOmment(dr.item("JOid"))
-            _commentCollect.Add(cm)
+            mysql = "Select * From tblComments Where Joid = " & _id
+            ds = LoadSQL(mysql, "tblComments")
+            For Each dr2 In ds.Tables(0).Rows
+                Dim cm As New Comments
+                cm.VAultCOmment(dr2.item("CID"))
+                _commentCollect.Add(cm)
+            Next
         Next
     End Sub
 

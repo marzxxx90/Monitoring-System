@@ -66,8 +66,8 @@
         loadbyRow(ds.Tables(0).Rows(0))
     End Sub
 
-    Friend Sub VAultCOmment(ByVal id As Integer)
-        mysql = "SELECT * FROM " & tbl & " WHERE Joid = " & id
+    Friend Sub VAultCOmment(ByVal Cid As Integer)
+        mysql = "SELECT * FROM " & tbl & " WHERE CID = " & Cid
         Dim ds As DataSet = LoadSQL(mysql, tbl)
 
         If ds.Tables(0).Rows.Count = 0 Then Exit Sub
@@ -84,5 +84,18 @@
             _status = .Item("Status")
         End With
     End Sub
+
+    Friend Sub UpdateComments(ByVal cid As Integer)
+        mysql = "SELECT * FROM " & tbl & " WHERE CID = " & cid
+        Dim ds As DataSet = LoadSQL(mysql, tbl)
+
+        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+
+        With ds.Tables(0).Rows(0)
+            .Item("Status") = 0
+        End With
+        database.SaveEntry(ds, False)
+    End Sub
+
 #End Region
 End Class

@@ -83,9 +83,24 @@
         If lvJobOrder.SelectedItems.Count = 0 Then Exit Sub
 
         Dim idx As Integer = lvJobOrder.FocusedItem.Tag
-        '   job = New Comments
+        Dim jo As New JobOrder
 
-        cm.VAultCOmment(idx)
+        jo.ID = idx
+        jo.LoadJobOrder()
+
+        For Each com As Comments In jo.CommentCollect
+            With com
+
+                cm = New Comments
+                cm.VAultCOmment(.ID)
+                frmViewComments.AddItem(cm)
+                cm.UpdateComments(.ID)
+
+            End With
+        Next
+
+        LoadJobOrder()
+        frmViewComments.Show()
     End Sub
 
 End Class
