@@ -3,12 +3,28 @@
 
     Private Sub frmEmploye_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ClearFields()
+        cboDepartment.Items.AddRange(GetDistinct("Department"))
     End Sub
+
+    ''' <remarks></remarks>
+    Private Function GetDistinct(ByVal col As String) As String()
+        Dim mySql As String = "SELECT DISTINCT " & col & " FROM tblemployee WHERE " & col & " <> '' ORDER BY " & col & " ASC"
+        Dim ds As DataSet = LoadSQL(mySql)
+
+        Dim MaxCount As Integer = ds.Tables(0).Rows.Count
+        Dim str(MaxCount - 1) As String
+        For cnt As Integer = 0 To MaxCount - 1
+            Dim tmpStr As String = ds.Tables(0).Rows(cnt).Item(0)
+            str(cnt) = tmpStr
+        Next
+
+        Return str
+    End Function
 
     Private Function isValid() As Boolean
         If txtFirstName.Text = "" Then Return False
         If txtLastName.Text = "" Then Return False
-        If txtDepartment.Text = "" Then Return False
+        If cboDepartment.Text = "" Then Return False
         If cboGender.Text = "" Then Return False
 
         Return True
@@ -20,7 +36,7 @@
         txtLastName.Clear()
         txtSuffix.Clear()
         txtJobDescription.Clear()
-        txtDepartment.Clear()
+        cboDepartment.SelectedItem = Nothing
     End Sub
 
     Private Sub btnSave_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSave.Click
@@ -34,11 +50,11 @@
             .Suffix = txtSuffix.Text
             .Gender = IIf(cboGender.Text = "Male", 1, 0)
             .JobDescription = txtJobDescription.Text
-            .Department = txtDepartment.Text
+            .Department = cboDepartment.Text
             .SaveEmployee()
         End With
 
-        MsgBox("Employee " & String.Format("{0} {1}", emp.FirstName, emp.LastName) & "Successfully Saved")
+        MsgBox("Employee " & String.Format("{0} {1}", emp.FirstName, emp.LastName) & " Successfully Saved.")
 
         If MsgBox("Do you want to add new employee?", MsgBoxStyle.YesNo, "Employee") = MsgBoxResult.Yes Then
             ClearFields()
