@@ -22,20 +22,6 @@
         Console.WriteLine("User successfully loaded.")
     End Sub
 
-    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
-        If btnAdd.Text = "&Add" Then
-            If Not IsValid() Then Exit Sub
-            save_()
-        ElseIf btnAdd.Text = "&Edit" Then
-            btnAdd.Text = "&Update"
-            disabled(True) : Exit Sub
-        Else
-            If Not IsValid() Then Exit Sub
-            update_()
-        End If
-
-    End Sub
-
     Private Sub save_()
         Dim msg As DialogResult = MsgBox("Do you want to add this user?", MsgBoxStyle.YesNo, "Add")
         If msg = vbNo Then Exit Sub
@@ -154,5 +140,21 @@
 
     Private Sub frmUserManagement_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         load_listUser()
+        SysUser.CreateADMIN()
     End Sub
+
+    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+        If btnAdd.Text = "&Add" Then
+            If Not IsValid() Then Exit Sub
+            save_()
+        ElseIf btnAdd.Text = "&Edit" Then
+            btnAdd.Text = "&Update"
+            disabled(True) : Exit Sub
+        Else
+            If Not IsValid() Then Exit Sub
+            update_()
+        End If
+
+    End Sub
+
 End Class

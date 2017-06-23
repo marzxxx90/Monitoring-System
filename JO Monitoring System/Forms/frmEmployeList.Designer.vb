@@ -29,9 +29,7 @@ Partial Class frmEmployeList
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.btnView = New System.Windows.Forms.Button()
         Me.btnAdd = New System.Windows.Forms.Button()
-        Me.btnSelect = New System.Windows.Forms.Button()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -77,15 +75,6 @@ Partial Class frmEmployeList
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Search Name"
         '
-        'btnView
-        '
-        Me.btnView.Location = New System.Drawing.Point(828, 350)
-        Me.btnView.Name = "btnView"
-        Me.btnView.Size = New System.Drawing.Size(75, 23)
-        Me.btnView.TabIndex = 2
-        Me.btnView.Text = "Vie&w"
-        Me.btnView.UseVisualStyleBackColor = True
-        '
         'btnAdd
         '
         Me.btnAdd.Location = New System.Drawing.Point(12, 350)
@@ -94,15 +83,6 @@ Partial Class frmEmployeList
         Me.btnAdd.TabIndex = 3
         Me.btnAdd.Text = "&Add"
         Me.btnAdd.UseVisualStyleBackColor = True
-        '
-        'btnSelect
-        '
-        Me.btnSelect.Location = New System.Drawing.Point(741, 350)
-        Me.btnSelect.Name = "btnSelect"
-        Me.btnSelect.Size = New System.Drawing.Size(75, 23)
-        Me.btnSelect.TabIndex = 4
-        Me.btnSelect.Text = "S&elect"
-        Me.btnSelect.UseVisualStyleBackColor = True
         '
         'ColumnHeader1
         '
@@ -151,9 +131,7 @@ Partial Class frmEmployeList
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(915, 383)
-        Me.Controls.Add(Me.btnSelect)
         Me.Controls.Add(Me.btnAdd)
-        Me.Controls.Add(Me.btnView)
         Me.Controls.Add(Me.lvEmployee)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frmEmployeList"
@@ -167,9 +145,7 @@ Partial Class frmEmployeList
     Friend WithEvents btnSearch As System.Windows.Forms.Button
     Friend WithEvents txtSearch As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents btnView As System.Windows.Forms.Button
     Friend WithEvents btnAdd As System.Windows.Forms.Button
-    Friend WithEvents btnSelect As System.Windows.Forms.Button
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader

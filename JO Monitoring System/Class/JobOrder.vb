@@ -186,6 +186,15 @@
         End With
 
     End Sub
+
+    Friend Sub UpdateStatus()
+        Dim mysql As String = "Select * From tblJobOrder Where Joid = " & _id
+        Dim ds As DataSet = LoadSQL(mysql, "tblJobOrder")
+
+        ds.Tables(0).Rows(0).Item("Status") = _status
+
+        SaveEntry(ds, False)
+    End Sub
 #End Region
 
 End Class

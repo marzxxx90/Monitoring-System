@@ -80,12 +80,25 @@
     End Sub
 
     Private Sub lvJobOrder_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvJobOrder.DoubleClick
+
         If lvJobOrder.SelectedItems.Count = 0 Then Exit Sub
 
         Dim idx As Integer = lvJobOrder.FocusedItem.Tag
         '   job = New Comments
 
         cm.VAultCOmment(idx)
+    End Sub
+
+
+
+    Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
+        If lvJobOrder.SelectedItems.Count = 0 Then Exit Sub
+
+        Dim Jo As New JobOrder
+        Jo.ID = lvJobOrder.FocusedItem.Tag
+        Jo.LoadJobOrder()
+        diagUpdateJO.LoadJobOrder(Jo)
+        diagUpdateJO.Show()
     End Sub
 
 End Class
