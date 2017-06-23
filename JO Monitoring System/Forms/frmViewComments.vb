@@ -8,6 +8,7 @@
             lv.SubItems.Add(.Comments)
         End With
     End Sub
+
     Private Sub loadcomments()
         If txtSearch.Text = "" Then
             mysql = "Select * from tblcomments ORDER BY DATE_CREATED DESC LIMIT 30"

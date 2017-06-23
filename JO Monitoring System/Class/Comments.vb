@@ -75,7 +75,7 @@
 
     End Sub
 
-    Private Sub loadbyRow(ByVal dr As DataRow)
+    Friend Sub loadbyRow(ByVal dr As DataRow)
         With dr
             _ID = .Item("CID")
             _JOID = .Item("JOID")

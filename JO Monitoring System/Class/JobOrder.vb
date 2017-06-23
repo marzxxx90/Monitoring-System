@@ -151,18 +151,24 @@
     Friend Sub LoadJobOrder()
         Dim mysql As String = "Select * From tblJobOrder Where Joid = " & _id
         Dim ds As DataSet = LoadSQL(mysql, "tblJobOrder")
+        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
 
-
-        _commentCollect = New Comment_Collect
         For Each dr In ds.Tables(0).Rows
             LoadbyRows(dr)
-            mysql = "Select * From tblComments Where Joid = " & _id
-            ds = LoadSQL(mysql, "tblComments")
-            For Each dr2 In ds.Tables(0).Rows
-                Dim cm As New Comments
-                cm.VAultCOmment(dr2.item("CID"))
-                _commentCollect.Add(cm)
-            Next
+        Next
+
+        mysql = "Select * From tblComments Where Joid = " & _id
+
+        ds.Clear()
+        ds = LoadSQL(mysql, "tblComments")
+
+        Console.WriteLine("lOADING COMMENTS")
+        _commentCollect = New Comment_Collect
+        For Each dr As DataRow In ds.Tables("tblComments").Rows
+            Dim tmpComments As New Comments
+            tmpComments.loadbyRow(dr)
+
+            _commentCollect.Add(tmpComments)
         Next
     End Sub
 
@@ -185,10 +191,7 @@
             _status = .Item("Status")
             _notifiyStatus = .Item("NotifyStatus")
 
-
-
         End With
-
     End Sub
 #End Region
 
