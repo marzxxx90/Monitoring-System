@@ -94,6 +94,12 @@
     <Compile Include="Forms\diagUpdateJO.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\frmabout.Designer.vb">
+      <DependentUpon>frmabout.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmabout.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmcomment1.Designer.vb">
       <DependentUpon>frmcomment1.vb</DependentUpon>
     </Compile>
@@ -178,6 +184,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Forms\diagUpdateJO.resx">
       <DependentUpon>diagUpdateJO.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmabout.resx">
+      <DependentUpon>frmabout.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmcomment1.resx">
       <DependentUpon>frmcomment1.vb</DependentUpon>

@@ -135,6 +135,7 @@ Partial Class frmEmployeList
         Me.Controls.Add(Me.lvEmployee)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "frmEmployeList"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Search Employee"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
