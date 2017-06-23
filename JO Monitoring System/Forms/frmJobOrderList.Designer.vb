@@ -39,8 +39,9 @@ Partial Class frmJobOrderList
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.btnAdd = New System.Windows.Forms.Button()
         Me.imgList = New System.Windows.Forms.ImageList(Me.components)
+        Me.btnAdd = New System.Windows.Forms.Button()
+        Me.btnSelect = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -138,6 +139,12 @@ Partial Class frmJobOrderList
         '
         Me.ColumnHeader9.Text = "Status"
         '
+        'imgList
+        '
+        Me.imgList.ImageStream = CType(resources.GetObject("imgList.ImageStream"), System.Windows.Forms.ImageListStreamer)
+        Me.imgList.TransparentColor = System.Drawing.Color.Transparent
+        Me.imgList.Images.SetKeyName(0, "Message")
+        '
         'btnAdd
         '
         Me.btnAdd.Location = New System.Drawing.Point(12, 350)
@@ -147,17 +154,21 @@ Partial Class frmJobOrderList
         Me.btnAdd.Text = "&Add"
         Me.btnAdd.UseVisualStyleBackColor = True
         '
-        'imgList
+        'btnSelect
         '
-        Me.imgList.ImageStream = CType(resources.GetObject("imgList.ImageStream"), System.Windows.Forms.ImageListStreamer)
-        Me.imgList.TransparentColor = System.Drawing.Color.Transparent
-        Me.imgList.Images.SetKeyName(0, "Message")
+        Me.btnSelect.Location = New System.Drawing.Point(828, 350)
+        Me.btnSelect.Name = "btnSelect"
+        Me.btnSelect.Size = New System.Drawing.Size(75, 23)
+        Me.btnSelect.TabIndex = 7
+        Me.btnSelect.Text = "&Select"
+        Me.btnSelect.UseVisualStyleBackColor = True
         '
         'frmJobOrderList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(915, 383)
+        Me.Controls.Add(Me.btnSelect)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.lvJobOrder)
         Me.Controls.Add(Me.GroupBox1)
@@ -183,5 +194,8 @@ Partial Class frmJobOrderList
     Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader8 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader9 As System.Windows.Forms.ColumnHeader
+
     Friend WithEvents imgList As System.Windows.Forms.ImageList
+    Friend WithEvents btnSelect As System.Windows.Forms.Button
+
 End Class

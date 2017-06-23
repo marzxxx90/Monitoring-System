@@ -68,15 +68,15 @@
         frmOrig = frmOrigin
     End Sub
 
-    Private Sub lvEmployee_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvEmployee.DoubleClick
-        If Not fromOtherForm Then
-            btnView.PerformClick()
-        Else
-            btnSelect.PerformClick()
-        End If
-    End Sub
+    'Private Sub lvEmployee_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvEmployee.DoubleClick
+    '    If Not fromOtherForm Then
+    '        btnView.PerformClick()
+    '    Else
+    '        btnSelect.PerformClick()
+    '    End If
+    'End Sub
 
-    Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
+    Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         If lvEmployee.Items.Count = 0 Then Exit Sub
 
         Dim idx As Integer = CInt(lvEmployee.FocusedItem.Text)

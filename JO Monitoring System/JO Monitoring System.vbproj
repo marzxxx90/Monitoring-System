@@ -88,6 +88,12 @@
     <Compile Include="Class\Employee.vb" />
     <Compile Include="Class\JobOrder.vb" />
     <Compile Include="Class\SystemUser.vb" />
+    <Compile Include="Forms\diagUpdateJO.Designer.vb">
+      <DependentUpon>diagUpdateJO.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\diagUpdateJO.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmcomment1.Designer.vb">
       <DependentUpon>frmcomment1.vb</DependentUpon>
     </Compile>
@@ -170,6 +176,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\diagUpdateJO.resx">
+      <DependentUpon>diagUpdateJO.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmcomment1.resx">
       <DependentUpon>frmcomment1.vb</DependentUpon>
     </EmbeddedResource>
