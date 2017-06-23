@@ -10,24 +10,16 @@
     End Sub
 
     Private Sub loadcomments()
-        If txtSearch.Text = "" Then
-            mysql = "Select * from tblcomments ORDER BY DATE_CREATED DESC LIMIT 30"
-            ds = LoadSQL(mysql, "tblcomments")
-        Else
-            mysql = "Select * from tblcomments WHERE JOID = '" & txtSearch.Text & "'"
-            ds = LoadSQL(mysql, "tblcomments")
-        End If
-
-        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+        mysql = "Select * from tblcomments WHERE JOID = '" & txtSearch.Text & "' ORDER BY CID DESC"
+        ds = LoadSQL(mysql, "tblcomments")
+   
+        If ds.Tables(0).Rows.Count = 0 Then LvComment.Items.Clear() : Exit Sub
 
         LvComment.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
             With dr
                 Dim lv As ListViewItem = LvComment.Items.Add(.Item("JOID"))
                 lv.SubItems.Add(.Item("Comments"))
-                If .Item("Status") = 1 Then
-                    lv.ImageKey = "Message"
-                End If
             End With
         Next
 
@@ -48,5 +40,9 @@
         Me.Enabled=false
         frmcomment1.txtComments.Text = LvComment.SelectedItems(0).SubItems(1).Text
         frmcomment1.Show()
+    End Sub
+
+    Private Sub frmViewComments_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.TopMost = True
     End Sub
 End Class

@@ -10,7 +10,7 @@
         Dim mysql As String = String.Empty
         If str <> "" Then
             mysql = "Select * From tblJobOrder Where Upper(Name) like Upper('%" & str & "%') OR RefNo like '%" & str & "%'" & _
-                    " OR Description like '%" & str & "%'"
+                    " OR Description like '%" & str & "%' ORDER BY Date_Started Desc"
         Else
             mysql = "Select * From tblJobOrder Where Status = 'P' ORDER BY Date_Started Desc Limit 10"
         End If

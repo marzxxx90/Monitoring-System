@@ -75,4 +75,7 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub tsEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsEmployee.Click
+        frmEmploye.Show()
+    End Sub
 End Class
