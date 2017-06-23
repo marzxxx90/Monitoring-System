@@ -75,4 +75,13 @@ Public Class frmMain
 
     End Sub
 
+    Private Sub DailyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DailyToolStripMenuItem.Click
+        frmReportStatus.FormType = frmReportStatus.Type.Daily
+        frmReportStatus.Show()
+    End Sub
+
+    Private Sub MonthlyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MonthlyToolStripMenuItem.Click
+        frmReportStatus.FormType = frmReportStatus.Type.Monthly
+        frmReportStatus.Show()
+    End Sub
 End Class

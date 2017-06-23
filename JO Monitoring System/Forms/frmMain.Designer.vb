@@ -33,9 +33,11 @@ Partial Class frmMain
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsJobOrder = New System.Windows.Forms.ToolStripButton()
+        Me.tsEmployee = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.tsEmployee = New System.Windows.Forms.ToolStripButton()
+        Me.DailyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.MonthlyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.msMain.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -85,6 +87,7 @@ Partial Class frmMain
         '
         'ReportsToolStripMenuItem
         '
+        Me.ReportsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DailyToolStripMenuItem, Me.MonthlyToolStripMenuItem})
         Me.ReportsToolStripMenuItem.Name = "ReportsToolStripMenuItem"
         Me.ReportsToolStripMenuItem.Size = New System.Drawing.Size(59, 20)
         Me.ReportsToolStripMenuItem.Text = "Reports"
@@ -119,6 +122,17 @@ Partial Class frmMain
         Me.tsJobOrder.Size = New System.Drawing.Size(100, 40)
         Me.tsJobOrder.Text = "Job Order"
         '
+        'tsEmployee
+        '
+        Me.tsEmployee.AutoSize = False
+        Me.tsEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.tsEmployee.Image = CType(resources.GetObject("tsEmployee.Image"), System.Drawing.Image)
+        Me.tsEmployee.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.tsEmployee.Margin = New System.Windows.Forms.Padding(3, 1, 0, 2)
+        Me.tsEmployee.Name = "tsEmployee"
+        Me.tsEmployee.Size = New System.Drawing.Size(100, 40)
+        Me.tsEmployee.Text = "Employee"
+        '
         'StatusStrip1
         '
         Me.StatusStrip1.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -138,16 +152,17 @@ Partial Class frmMain
         Me.tsUser.Size = New System.Drawing.Size(77, 17)
         Me.tsUser.Text = "No User yet"
         '
-        'tsEmployee
+        'DailyToolStripMenuItem
         '
-        Me.tsEmployee.AutoSize = False
-        Me.tsEmployee.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.tsEmployee.Image = CType(resources.GetObject("tsEmployee.Image"), System.Drawing.Image)
-        Me.tsEmployee.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.tsEmployee.Margin = New System.Windows.Forms.Padding(3, 1, 0, 2)
-        Me.tsEmployee.Name = "tsEmployee"
-        Me.tsEmployee.Size = New System.Drawing.Size(100, 40)
-        Me.tsEmployee.Text = "Employee"
+        Me.DailyToolStripMenuItem.Name = "DailyToolStripMenuItem"
+        Me.DailyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DailyToolStripMenuItem.Text = "Daily"
+        '
+        'MonthlyToolStripMenuItem
+        '
+        Me.MonthlyToolStripMenuItem.Name = "MonthlyToolStripMenuItem"
+        Me.MonthlyToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.MonthlyToolStripMenuItem.Text = "Monthly"
         '
         'frmMain
         '
@@ -189,6 +204,8 @@ Partial Class frmMain
 
     Friend WithEvents UserManagementToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents tsEmployee As System.Windows.Forms.ToolStripButton
+    Friend WithEvents DailyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents MonthlyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 
 End Class
