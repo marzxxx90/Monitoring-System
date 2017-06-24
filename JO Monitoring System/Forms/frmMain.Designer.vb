@@ -32,14 +32,15 @@ Partial Class frmMain
         Me.MaintenanceToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ReportsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.tsJobOrder = New System.Windows.Forms.ToolStripButton()
         Me.tsEmployee = New System.Windows.Forms.ToolStripButton()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.tsCurrentDate = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tsUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.tmpTimer = New System.Windows.Forms.Timer(Me.components)
-        Me.tsCurrentDate = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.msMain.SuspendLayout()
         Me.ToolStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
@@ -57,7 +58,7 @@ Partial Class frmMain
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoginToolStripMenuItem, Me.UserManagementToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LoginToolStripMenuItem, Me.UserManagementToolStripMenuItem, Me.SettingsToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -84,7 +85,7 @@ Partial Class frmMain
         'MaintenanceToolStripMenuItem
         '
         Me.MaintenanceToolStripMenuItem.Name = "MaintenanceToolStripMenuItem"
-        Me.MaintenanceToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.MaintenanceToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.MaintenanceToolStripMenuItem.Text = "Maintenance"
         '
         'ReportsToolStripMenuItem
@@ -99,6 +100,12 @@ Partial Class frmMain
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
         Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.HelpToolStripMenuItem.Text = "Help"
+        '
+        'AboutToolStripMenuItem
+        '
+        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
+        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
+        Me.AboutToolStripMenuItem.Text = "&About Us"
         '
         'ToolStrip1
         '
@@ -147,6 +154,14 @@ Partial Class frmMain
         Me.StatusStrip1.TabIndex = 3
         Me.StatusStrip1.Text = "StatusStrip1"
         '
+        'tsCurrentDate
+        '
+        Me.tsCurrentDate.BackColor = System.Drawing.SystemColors.ButtonFace
+        Me.tsCurrentDate.BorderStyle = System.Windows.Forms.Border3DStyle.Raised
+        Me.tsCurrentDate.Name = "tsCurrentDate"
+        Me.tsCurrentDate.Size = New System.Drawing.Size(79, 17)
+        Me.tsCurrentDate.Text = "Date not set"
+        '
         'tsUser
         '
         Me.tsUser.BackColor = System.Drawing.SystemColors.Highlight
@@ -159,19 +174,11 @@ Partial Class frmMain
         '
         Me.tmpTimer.Enabled = True
         '
-        'tsCurrentDate
+        'SettingsToolStripMenuItem
         '
-        Me.tsCurrentDate.BackColor = System.Drawing.SystemColors.ButtonFace
-        Me.tsCurrentDate.BorderStyle = System.Windows.Forms.Border3DStyle.Raised
-        Me.tsCurrentDate.Name = "tsCurrentDate"
-        Me.tsCurrentDate.Size = New System.Drawing.Size(79, 17)
-        Me.tsCurrentDate.Text = "Date not set"
-        '
-        'AboutToolStripMenuItem
-        '
-        Me.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem"
-        Me.AboutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AboutToolStripMenuItem.Text = "&About Us"
+        Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.SettingsToolStripMenuItem.Text = "&Settings"
         '
         'frmMain
         '
@@ -217,6 +224,7 @@ Partial Class frmMain
     Friend WithEvents tmpTimer As System.Windows.Forms.Timer
     Friend WithEvents tsCurrentDate As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SettingsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 
 End Class

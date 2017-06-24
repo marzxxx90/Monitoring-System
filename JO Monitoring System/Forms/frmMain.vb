@@ -10,7 +10,7 @@ Public Class frmMain
         tsJobOrder.Enabled = Not st
         tsEmployee.Enabled = Not st
         UserManagementToolStripMenuItem.Enabled = Not st
-
+        SettingsToolStripMenuItem.Enabled = Not st
 
         If Not st Then
             LoginToolStripMenuItem.Text = "&Log Out"
@@ -100,5 +100,11 @@ Public Class frmMain
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
         frmabout.Show()
+    End Sub
+
+    Private Sub SettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
+        If SysUser.ROLE = "Admin" Then
+            frmsettings.Show()
+        End If
     End Sub
 End Class
