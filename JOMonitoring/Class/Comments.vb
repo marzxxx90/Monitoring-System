@@ -55,6 +55,7 @@
             .Item("JOID") = _JOID
             .Item("Comments") = _Comments
             .Item("Date_Created") = CDate(Now.ToShortDateString).ToString("yyyy/MM/dd")
+            .Item("Status") = 1
         End With
         ds.Tables(tbl).Rows.Add(dsNewRow)
         database.SaveEntry(ds)
