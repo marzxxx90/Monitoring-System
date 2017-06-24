@@ -153,9 +153,13 @@
     End Sub
 
 
-    Private Sub loadPSC(ByVal ST As String, ByVal dt As String)
+    Private Sub loadPSC(ByVal ST As String, Optional ByVal dt As String = "")
         mysql = "SELECT * FROM JO_LIST WHERE"
-        mysql &= " STATUS = '" & ST & "'" & dt & ""
+        mysql &= " STATUS = '" & ST & "'"
+        If dt <> "" Then
+            mysql &= " '" & ST & "'"
+        End If
+
 
         ds = LoadSQL(mysql, "JO_LIST")
         If ds.Tables(0).Rows.Count = 0 Then Exit Sub
@@ -186,7 +190,7 @@
 
     Private Sub chkPending_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPending.CheckedChanged
         If chkPending.Checked Then
-            loadPSC("P", " AND DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "'")
+            loadPSC("P")
         End If
     End Sub
 End Class
