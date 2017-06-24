@@ -127,7 +127,6 @@
 
     Private Sub frmJOMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         lvJobOrder.Items.Clear()
-        SEARCH()
     End Sub
 
     Private Sub txtFilter_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtFilter.KeyPress
@@ -151,5 +150,43 @@
 
     Private Sub lvJobOrder_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lvJobOrder.DoubleClick
         btnComments.PerformClick()
+    End Sub
+
+
+    Private Sub loadPSC(ByVal ST As String, ByVal dt As String)
+        mysql = "SELECT * FROM JO_LIST WHERE"
+        mysql &= " STATUS = '" & ST & "'" & dt & ""
+
+        ds = LoadSQL(mysql, "JO_LIST")
+        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+
+
+        lvJobOrder.Items.Clear()
+        For Each dr As DataRow In ds.Tables(0).Rows
+            JO = New JobOrder
+            JO.ID = dr.Item("JOID")
+            JO.LoadJobOrder()
+            additem(JO)
+        Next
+
+        MsgBox("Found: [" & ds.Tables(0).Rows.Count & "] JO List", MsgBoxStyle.OkOnly, "Count")
+    End Sub
+
+    Private Sub chkServed_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkServed.CheckedChanged
+        If chkServed.Checked Then
+            loadPSC("S", " AND DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' ORDER BY DATE_TARGET DESC LIMIT 30")
+        End If
+    End Sub
+
+    Private Sub chkCancel_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCancel.CheckedChanged
+        If chkCancel.Checked Then
+            loadPSC("C", " AND DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' ORDER BY DATE_TARGET DESC LIMIT 30")
+        End If
+    End Sub
+
+    Private Sub chkPending_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPending.CheckedChanged
+        If chkPending.Checked Then
+            loadPSC("P", " AND DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "'")
+        End If
     End Sub
 End Class

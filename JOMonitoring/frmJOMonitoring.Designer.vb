@@ -32,6 +32,7 @@ Partial Class frmJOMonitoring
         Me.chkServed = New System.Windows.Forms.CheckBox()
         Me.txtFilter = New System.Windows.Forms.TextBox()
         Me.lvJobOrder = New System.Windows.Forms.ListView()
+        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
@@ -42,7 +43,6 @@ Partial Class frmJOMonitoring
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnComments = New System.Windows.Forms.Button()
-        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -133,6 +133,11 @@ Partial Class frmJOMonitoring
         Me.lvJobOrder.UseCompatibleStateImageBehavior = False
         Me.lvJobOrder.View = System.Windows.Forms.View.Details
         '
+        'ColumnHeader10
+        '
+        Me.ColumnHeader10.Text = "#"
+        Me.ColumnHeader10.Width = 0
+        '
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Name"
@@ -186,11 +191,6 @@ Partial Class frmJOMonitoring
         Me.btnComments.TabIndex = 6
         Me.btnComments.Text = "&Comment"
         Me.btnComments.UseVisualStyleBackColor = True
-        '
-        'ColumnHeader10
-        '
-        Me.ColumnHeader10.Text = "#"
-        Me.ColumnHeader10.Width = 0
         '
         'frmJOMonitoring
         '
