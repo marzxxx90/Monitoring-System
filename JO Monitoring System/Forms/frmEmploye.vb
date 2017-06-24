@@ -56,10 +56,9 @@
 
         MsgBox("Employee " & String.Format("{0} {1}", emp.FirstName, emp.LastName) & " Successfully Saved.")
 
-        If MsgBox("Do you want to add new employee?", MsgBoxStyle.YesNo, "Employee") = MsgBoxResult.Yes Then
-            ClearFields()
-        Else
-            Me.Close()
-        End If
+        emp.ID = emp.ID
+        emp.LoadEmployee()
+        frmEmployeList.AutoSelect(emp)
+        Me.Close()
     End Sub
 End Class
