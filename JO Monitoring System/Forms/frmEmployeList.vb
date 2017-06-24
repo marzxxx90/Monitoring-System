@@ -76,7 +76,17 @@
         End If
     End Sub
 
-    Private Sub btnSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
+    Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
+        If isEnter(e) Then
+            btnSearch.PerformClick()
+        End If
+    End Sub
+
+    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+        frmEmploye.Show()
+    End Sub
+
+    Private Sub btmSelect_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSelect.Click
         If lvEmployee.Items.Count = 0 Then Exit Sub
 
         Dim idx As Integer = CInt(lvEmployee.FocusedItem.Text)
@@ -89,13 +99,7 @@
         Me.Close()
     End Sub
 
-    Private Sub txtSearch_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSearch.KeyPress
-        If isEnter(e) Then
-            btnSearch.PerformClick()
-        End If
-    End Sub
+    Private Sub btnView_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnView.Click
 
-    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
-        frmEmploye.Show()
     End Sub
 End Class

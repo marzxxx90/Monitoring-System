@@ -3,12 +3,12 @@ Imports System.Data.SqlClient
 Imports System.Data.Odbc
 
 Public Class frmMain
+    Friend dateSet As Boolean = False
 
     Friend Sub NotYetLogin(Optional ByVal st As Boolean = True)
 
         tsJobOrder.Enabled = Not st
         tsEmployee.Enabled = Not st
-
         UserManagementToolStripMenuItem.Enabled = Not st
 
 
@@ -45,6 +45,7 @@ Public Class frmMain
             Next
             MsgBox("Thank you!", MsgBoxStyle.Information)
             NotYetLogin()
+            tsCurrentDate.Text = "Date not set" : dateSet = False
             frmLogin.Show()
         End If
     End Sub
@@ -56,19 +57,26 @@ Public Class frmMain
         Else
             Console.WriteLine(FullName & " welcome!")
             NotYetLogin(False)
+            tmpTimer.Start()
         End If
 
+        dateSet = False
+    End Sub
+
+    Public Sub New()
+        MyBase.New()
+        InitializeComponent()
+        Me.MaximumSize = New Size(850, 600)
+        Me.StartPosition = FormStartPosition.CenterScreen
     End Sub
 
     Private Sub tsJobOrder_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsJobOrder.Click
         frmJobOrderList.Show()
     End Sub
 
-
-    Private Sub stEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsEmployee.Click
+    Private Sub stEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         frmEmployeList.Show()
-
-	End Sub
+    End Sub
 
     Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
         If SysUser.ROLE = "Admin" Then
@@ -76,5 +84,21 @@ Public Class frmMain
         End If
         MsgBox("You don't have persmision in this module!", MsgBoxStyle.Critical, "Error")
 
+    End Sub
+
+    Private Sub tsEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsEmployee.Click
+        frmEmploye.Show()
+    End Sub
+
+    Private Sub tmpTimer_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tmpTimer.Tick
+        If dateSet Then
+            tsCurrentDate.Text = CurrentDate.ToLongDateString & " " & Now.ToString("T")
+        Else
+            tsCurrentDate.Text = "Date not set"
+        End If
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
+        frmabout.Show()
     End Sub
 End Class
