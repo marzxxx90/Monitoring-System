@@ -63,6 +63,7 @@
 
         load_listUser()
         clear()
+        btnAdd.Text = "&Add"
         MsgBox("User updated.", MsgBoxStyle.Information, "Update")
     End Sub
 
