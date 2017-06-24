@@ -23,6 +23,7 @@ Partial Class frmEmploye
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cboDepartment = New System.Windows.Forms.ComboBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtJobDescription = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
@@ -38,7 +39,6 @@ Partial Class frmEmploye
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnSave = New System.Windows.Forms.Button()
-        Me.cboDepartment = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -64,6 +64,16 @@ Partial Class frmEmploye
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Employee Info"
+        '
+        'cboDepartment
+        '
+        Me.cboDepartment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
+        Me.cboDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboDepartment.FormattingEnabled = True
+        Me.cboDepartment.Location = New System.Drawing.Point(96, 301)
+        Me.cboDepartment.Name = "cboDepartment"
+        Me.cboDepartment.Size = New System.Drawing.Size(252, 21)
+        Me.cboDepartment.TabIndex = 12
         '
         'Label7
         '
@@ -196,16 +206,6 @@ Partial Class frmEmploye
         Me.btnSave.TabIndex = 2
         Me.btnSave.Text = "&Save"
         Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'cboDepartment
-        '
-        Me.cboDepartment.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append
-        Me.cboDepartment.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cboDepartment.FormattingEnabled = True
-        Me.cboDepartment.Location = New System.Drawing.Point(96, 301)
-        Me.cboDepartment.Name = "cboDepartment"
-        Me.cboDepartment.Size = New System.Drawing.Size(252, 21)
-        Me.cboDepartment.TabIndex = 12
         '
         'frmEmploye
         '
