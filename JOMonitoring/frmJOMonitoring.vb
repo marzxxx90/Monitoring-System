@@ -75,7 +75,7 @@
                              " DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' AND " & _
                              "STATUS ='P'"
             ds = LoadSQL(mysql, "JO_LIST")
-            If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+            If ds.Tables(0).Rows.Count = 0 Then MsgBox(ds.Tables(0).Rows.Count & " result found.", MsgBoxStyle.OkOnly, "Count") : lvJobOrder.Items.Clear() : Exit Sub
         End If
 
         lvJobOrder.Items.Clear()
@@ -86,7 +86,7 @@
             additem(JO)
         Next
 
-        MsgBox("Found: [" & ds.Tables(0).Rows.Count & "] JO List", MsgBoxStyle.OkOnly, "Count")
+        MsgBox(ds.Tables(0).Rows.Count & " result found.", MsgBoxStyle.OkOnly, "Count")
     End Sub
 
     Private Sub additem(ByVal JOlist As JobOrder)
@@ -127,6 +127,10 @@
 
     Private Sub frmJOMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         lvJobOrder.Items.Clear()
+        ' If chkPending.Checked Then
+        loadPSC("P", , False)
+        ' End If
+
     End Sub
 
     Private Sub txtFilter_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtFilter.KeyPress
@@ -153,7 +157,7 @@
     End Sub
 
 
-    Private Sub loadPSC(ByVal ST As String, Optional ByVal dt As String = "")
+    Private Sub loadPSC(ByVal ST As String, Optional ByVal dt As String = "", Optional ByVal isSearch As Boolean = True)
         mysql = "SELECT * FROM JO_LIST WHERE"
         mysql &= " STATUS = '" & ST & "'"
         If dt <> "" Then
@@ -162,7 +166,7 @@
 
 
         ds = LoadSQL(mysql, "JO_LIST")
-        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+        If ds.Tables(0).Rows.Count = 0 Then MsgBox(ds.Tables(0).Rows.Count & " result found.", MsgBoxStyle.OkOnly, "Count") : Exit Sub
 
 
         lvJobOrder.Items.Clear()
@@ -173,24 +177,26 @@
             additem(JO)
         Next
 
-        MsgBox("Found: [" & ds.Tables(0).Rows.Count & "] JO List", MsgBoxStyle.OkOnly, "Count")
+        If isSearch Then
+            MsgBox(ds.Tables(0).Rows.Count & " result found.", MsgBoxStyle.OkOnly, "Count")
+        End If
     End Sub
 
     Private Sub chkServed_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkServed.CheckedChanged
         If chkServed.Checked Then
-            loadPSC("S", " AND DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' ORDER BY DATE_TARGET DESC LIMIT 30")
+            loadPSC("S", " AND DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' ORDER BY DATE_TARGET DESC LIMIT 30", True)
         End If
     End Sub
 
     Private Sub chkCancel_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCancel.CheckedChanged
         If chkCancel.Checked Then
-            loadPSC("C", " AND DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' ORDER BY DATE_TARGET DESC LIMIT 30")
+            loadPSC("C", " AND DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' ORDER BY DATE_TARGET DESC LIMIT 30", True)
         End If
     End Sub
 
     Private Sub chkPending_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkPending.CheckedChanged
         If chkPending.Checked Then
-            loadPSC("P")
+            loadPSC("P", , True)
         End If
     End Sub
 End Class

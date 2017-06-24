@@ -93,8 +93,6 @@ Partial Class frmJOMonitoring
         'chkPending
         '
         Me.chkPending.AutoSize = True
-        Me.chkPending.Checked = True
-        Me.chkPending.CheckState = System.Windows.Forms.CheckState.Checked
         Me.chkPending.Location = New System.Drawing.Point(623, 26)
         Me.chkPending.Name = "chkPending"
         Me.chkPending.Size = New System.Drawing.Size(80, 21)
