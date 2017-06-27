@@ -112,14 +112,14 @@
         Next
     End Sub
 
-    Private Sub LoadEmployeeByID(ByVal tmpID As Integer)
-        Dim mysql As String = "Select * From tblEmployee Where Emp_ID = " & tmpID
-        Dim ds As DataSet = LoadSQL(mysql, "tblEmployee")
+    'Private Sub LoadEmployeeByID(ByVal tmpID As Integer)
+    '    Dim mysql As String = "Select * From tblEmployee Where Emp_ID = " & tmpID
+    '    Dim ds As DataSet = LoadSQL(mysql, "tblEmployee")
 
-        For Each dr In ds.Tables(0).Rows
-            LoadbyRows(dr)
-        Next
-    End Sub
+    '    For Each dr In ds.Tables(0).Rows
+    '        LoadbyRows(dr)
+    '    Next
+    'End Sub
 
     Private Sub LoadbyRows(ByVal dr As DataRow)
         With dr
@@ -141,7 +141,9 @@
         ds = LoadSQL(mySql)
 
         Dim id As Integer = ds.Tables(0).Rows(0).Item("Emp_ID")
-        LoadEmployeeByID(id)
+        _id = id
+
+        LoadEmployee()
     End Sub
 #End Region
 End Class

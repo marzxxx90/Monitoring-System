@@ -12,8 +12,7 @@
     Private Sub JobOrderStatus()
         Dim st As Date = GetFirstDate(monCal.SelectionStart)
         Dim en As Date = GetLastDate(monCal.SelectionEnd)
-        st = CDate(st.ToShortDateString).ToString("yyyy/MM/dd")
-        en = CDate(en.ToShortDateString).ToString("yyyy/MM/dd")
+
         Dim dsName As String = "dsJobOrderStatus", mySql As String = String.Empty, strStatus As String = String.Empty
 
         Select Case cboType.Text
@@ -50,9 +49,9 @@
             mySql &= "Inner Join tblemployee AS ER ON ER.EMP_ID = J.REQUESTOR "
             mySql &= "Where Status = '" & strStatus & "' "
             If rbStartedDate.Checked Then
-                mySql &= "And Date_Started Between '" & st & "' and '" & en & "'"
+                mySql &= "And Date_Started Between '" & CDate(st.ToShortDateString).ToString("yyyy/MM/dd") & "' and '" & CDate(en.ToShortDateString).ToString("yyyy/MM/dd") & "'"
             ElseIf rbTargetDate.Checked Then
-                mySql &= "And Date_Target Between '" & st & "' and '" & en & "'"
+                mySql &= "And Date_Target Between '" & CDate(st.ToShortDateString).ToString("yyyy/MM/dd") & "' and '" & CDate(en.ToShortDateString).ToString("yyyy/MM/dd") & "'"
             End If
 
         End If
