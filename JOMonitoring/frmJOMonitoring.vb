@@ -72,8 +72,8 @@
 
         Else
             Dim mysql As String = "Select * From JO_LIST WHERE " & _
-                             " DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' AND " & _
-                             "STATUS ='P'"
+                             " STATUS ='P'" & _
+                             " ORDER BY DATE_TARGET DESC"
             ds = LoadSQL(mysql, "JO_LIST")
             If ds.Tables(0).Rows.Count = 0 Then MsgBox(ds.Tables(0).Rows.Count & " result found.", MsgBoxStyle.OkOnly, "Count") : lvJobOrder.Items.Clear() : Exit Sub
         End If
@@ -128,7 +128,7 @@
     Private Sub frmJOMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         lvJobOrder.Items.Clear()
         ' If chkPending.Checked Then
-        loadPSC("P", , False)
+        loadPSC("P", " ORDER BY DATE_TARGET  DESC", False)
         ' End If
 
     End Sub
@@ -161,12 +161,11 @@
         mysql = "SELECT * FROM JO_LIST WHERE"
         mysql &= " STATUS = '" & ST & "'"
         If dt <> "" Then
-            mysql &= " '" & ST & "'"
+            mysql &= "" & dt & ""
         End If
 
-
         ds = LoadSQL(mysql, "JO_LIST")
-        If ds.Tables(0).Rows.Count = 0 Then MsgBox(ds.Tables(0).Rows.Count & " result found.", MsgBoxStyle.OkOnly, "Count") : Exit Sub
+        If ds.Tables(0).Rows.Count = 0 Then MsgBox(ds.Tables(0).Rows.Count & " result found.", MsgBoxStyle.OkOnly, "Count") : lvJobOrder.Items.Clear() : Exit Sub
 
 
         lvJobOrder.Items.Clear()
