@@ -5,7 +5,7 @@
         LoadJobOrder()
     End Sub
 
-    Private Sub LoadJobOrder(Optional ByVal str As String = "")
+    Friend Sub LoadJobOrder(Optional ByVal str As String = "")
         lvJobOrder.Items.Clear()
         Dim mysql As String = String.Empty
         If str <> "" Then
@@ -100,7 +100,7 @@
             End With
         Next
 
-        LoadJobOrder()
+
         frmViewComments.Show()
     End Sub
 
