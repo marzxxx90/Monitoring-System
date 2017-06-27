@@ -127,10 +127,10 @@
 
     Private Sub frmJOMonitoring_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         lvJobOrder.Items.Clear()
-        ' If chkPending.Checked Then
-        loadPSC("P", " ORDER BY DATE_TARGET  DESC", False)
-        ' End If
+        Control.CheckForIllegalCrossThreadCalls = False 'THREADING FOR BACKGROUND WORKER
+        JOtmr.Start()
 
+        loadPSC("P", " ORDER BY DATE_TARGET  DESC", False)
     End Sub
 
     Private Sub txtFilter_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtFilter.KeyPress
@@ -165,7 +165,7 @@
         End If
 
         ds = LoadSQL(mysql, "JO_LIST")
-        If ds.Tables(0).Rows.Count = 0 Then MsgBox(ds.Tables(0).Rows.Count & " result found.", MsgBoxStyle.OkOnly, "Count") : lvJobOrder.Items.Clear() : Exit Sub
+        If ds.Tables(0).Rows.Count = 0 Then Console.WriteLine(ds.Tables(0).Rows.Count & " result found.") : lvJobOrder.Items.Clear() : Exit Sub
 
 
         lvJobOrder.Items.Clear()
@@ -177,7 +177,7 @@
         Next
 
         If isSearch Then
-            MsgBox(ds.Tables(0).Rows.Count & " result found.", MsgBoxStyle.OkOnly, "Count")
+            Console.WriteLine(ds.Tables(0).Rows.Count & " result found.")
         End If
     End Sub
 
@@ -189,7 +189,7 @@
 
     Private Sub chkCancel_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkCancel.CheckedChanged
         If chkCancel.Checked Then
-            loadPSC("C", " AND DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' ORDER BY DATE_TARGET DESC LIMIT 30", True)
+            loadPSC("C", " ORDER BY DATE_TARGET DESC LIMIT 30", True)
         End If
     End Sub
 
@@ -197,5 +197,22 @@
         If chkPending.Checked Then
             loadPSC("P", , True)
         End If
+    End Sub
+
+    Private Sub jobgWorker_DoWork(ByVal sender As System.Object, ByVal e As System.ComponentModel.DoWorkEventArgs) Handles jobgWorker.DoWork
+        loadPSC("P", " ORDER BY DATE_TARGET  DESC LIMIT 30", False)
+    End Sub
+
+    Private Sub jobgWorker_RunWorkerCompleted(ByVal sender As System.Object, ByVal e As System.ComponentModel.RunWorkerCompletedEventArgs) Handles jobgWorker.RunWorkerCompleted
+        JOtmr.Start()
+    End Sub
+
+    Private Sub JOtmr_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles JOtmr.Tick
+        JOtmr.Stop()
+        jobgWorker.RunWorkerAsync()
+    End Sub
+
+    Private Sub lvJobOrder_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles lvJobOrder.KeyPress
+        If isEnter(e) Then btnComments.PerformClick()
     End Sub
 End Class

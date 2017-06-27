@@ -22,6 +22,7 @@ Partial Class frmJOMonitoring
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"EllieGwapo", "Junmar", "For Party party", "Sam Apple", "Hoo Jun Maa", "Tratar De Cogerme", "05/16/2016", "05/16/2018", "RefNum# 101470"}, -1)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmJOMonitoring))
         Me.btnSearch = New System.Windows.Forms.Button()
@@ -43,6 +44,9 @@ Partial Class frmJOMonitoring
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.btnComments = New System.Windows.Forms.Button()
+        Me.jobgWorker = New System.ComponentModel.BackgroundWorker()
+        Me.JOtmr = New System.Windows.Forms.Timer(Me.components)
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -121,6 +125,7 @@ Partial Class frmJOMonitoring
         'lvJobOrder
         '
         Me.lvJobOrder.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader10, Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9})
+        Me.lvJobOrder.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvJobOrder.FullRowSelect = True
         Me.lvJobOrder.GridLines = True
         Me.lvJobOrder.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
@@ -190,11 +195,30 @@ Partial Class frmJOMonitoring
         Me.btnComments.Text = "&Comment"
         Me.btnComments.UseVisualStyleBackColor = True
         '
+        'jobgWorker
+        '
+        Me.jobgWorker.WorkerReportsProgress = True
+        '
+        'JOtmr
+        '
+        Me.JOtmr.Enabled = True
+        Me.JOtmr.Interval = 300000
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(21, 378)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.TabIndex = 7
+        Me.Label2.Text = "Label2"
+        '
         'frmJOMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(929, 410)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.btnComments)
         Me.Controls.Add(Me.lvJobOrder)
         Me.Controls.Add(Me.GroupBox2)
@@ -206,6 +230,7 @@ Partial Class frmJOMonitoring
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents btnSearch As System.Windows.Forms.Button
@@ -227,5 +252,8 @@ Partial Class frmJOMonitoring
     Friend WithEvents ColumnHeader9 As System.Windows.Forms.ColumnHeader
     Friend WithEvents btnComments As System.Windows.Forms.Button
     Friend WithEvents ColumnHeader10 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents jobgWorker As System.ComponentModel.BackgroundWorker
+    Friend WithEvents JOtmr As System.Windows.Forms.Timer
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 
 End Class
