@@ -1,5 +1,6 @@
 ﻿Public Class frmEmploye
     Private emp As Employee
+    Friend FormOrigin As Form
 
     Private Sub frmEmploye_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         ClearFields()
@@ -27,7 +28,7 @@
         If cboDepartment.Text = "" Then Return False
         If cboGender.Text = "" Then Return False
 
-        Return True
+            Return True
     End Function
 
     Private Sub ClearFields()
@@ -56,10 +57,14 @@
 
         MsgBox("Employee " & String.Format("{0} {1}", emp.FirstName, emp.LastName) & " Successfully Saved.")
 
-        If MsgBox("Do you want to add new employee?", MsgBoxStyle.YesNo, "Employee") = MsgBoxResult.Yes Then
-            ClearFields()
-        Else
-            Me.Close()
+        emp.LoadLastEntry()
+        frmEmployeList.AutoSelect(emp)
+        Me.Close()
+    End Sub
+
+    Private Sub cboDepartment_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cboDepartment.KeyPress
+        If isEnter(e) Then
+            btnSave.PerformClick()
         End If
     End Sub
 End Class

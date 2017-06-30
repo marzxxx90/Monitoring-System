@@ -102,4 +102,14 @@
     Private Sub btnView_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnView.Click
 
     End Sub
+
+    Friend Sub AutoSelect(ByVal Emp As Employee)
+        If Not fromOtherForm Then
+            txtSearch.Text = Emp.FirstName
+            Exit Sub
+        End If
+
+        formSwitch.ReloadFormFromEmployee(frmOrig, Emp)
+        Me.Close()
+    End Sub
 End Class

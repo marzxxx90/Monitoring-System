@@ -86,6 +86,17 @@ Public Class frmMain
 
     End Sub
 
+
+    Private Sub DailyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DailyToolStripMenuItem.Click
+        frmReportStatus.FormType = frmReportStatus.Type.Daily
+        frmReportStatus.Show()
+    End Sub
+
+    Private Sub MonthlyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MonthlyToolStripMenuItem.Click
+        frmReportStatus.FormType = frmReportStatus.Type.Monthly
+        frmReportStatus.Show()
+
+    End Sub
     Private Sub tsEmployee_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles tsEmployee.Click
         frmEmploye.Show()
     End Sub
@@ -100,6 +111,7 @@ Public Class frmMain
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
         frmabout.Show()
+
     End Sub
 
     Private Sub SettingsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SettingsToolStripMenuItem.Click
