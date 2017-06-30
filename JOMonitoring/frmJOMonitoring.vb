@@ -15,62 +15,86 @@
         Dim strWords As String() = secured_str.Split(New Char() {" "c})
 
         If txtFilter.Text <> "" Then
-            Dim mysql As String = "Select * FROM JO_LIST WHERE"
+            Dim mysql As String = "Select * FROM JO_LIST WHERE ("
 
             If IsDate(secured_str) Then
-                mysql &= " J.DATE_TARGET = '" & CDate(secured_str).ToString("yyyy/MM/dd") & "' OR"
+                mysql &= " DATE_TARGET = '" & CDate(secured_str).ToString("yyyy/MM/dd") & "' OR"
             End If
 
             For Each Name In strWords
                 If Name Is strWords.Last Then
-                    mysql &= vbCr & " UPPER(REQUESTORS) LIKE UPPER('%" & name & "%') OR"
+                    mysql &= vbCr & " (REQUESTORS) LIKE ('%" & name & "%') OR"
                     Exit For
                 End If
             Next
 
-            mysql &= " UPPER(J.NAME) LIKE UPPER('%" & secured_str & "%') OR "
-            mysql &= " UPPER(J.DESCRIPTION) LIKE UPPER('%" & secured_str & "%') OR"
-            mysql &= " REFNO = " & secured_str & " OR "
-            mysql &= " J.JOID = " & secured_str & ""
+            For Each name In strWords
+                If name Is strWords.Last Then
+                    mysql &= vbCr & " (ASSIGNEES) LIKE ('%" & name & "%') OR"
+                    Exit For
+                End If
+            Next
+
+            mysql &= " NAME LIKE ('%" & secured_str & "%') OR "
+            mysql &= " DESCRIPTION LIKE ('%" & secured_str & "%') OR"
+            mysql &= " REFNO = '" & secured_str & "')"
+
+            If chkCancel.Checked Or chkPending.Checked Or chkServed.Checked Then
+                mysql &= " AND ("
+            End If
 
             If chkPending.Checked Then
-                mysql &= " AND J.STATUS = 'P'"
+                mysql &= " STATUS = 'P'"
             End If
 
             If chkServed.Checked Then
-                mysql &= " OR  J.STATUS = 'S'"
+                If chkPending.Checked Then
+                    mysql &= " OR STATUS = 'S'"
+                Else
+                    mysql &= " STATUS = 'S'"
+                End If
             End If
 
             If chkCancel.Checked Then
-                mysql &= " OR J.STATUS = 'C'"
+                If chkPending.Checked Or chkServed.Checked Then
+                    mysql &= " OR STATUS = 'C'"
+                Else
+                    mysql &= " STATUS = 'C'"
+                End If
             End If
+
+
+            If chkCancel.Checked Or chkPending.Checked Or chkServed.Checked Then
+                mysql &= " )"
+            End If
+
 
             ds = LoadSQL(mysql, "JO_LIST")
 
-            Else
+        Else
             Dim mysql As String = "Select * From JO_LIST WHERE " & _
-                             " DATE_TARGET = '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' AND " & _
+                             " DATE_TARGET <= '" & CDate(Now.ToShortDateString).ToString("yyyy/MM/dd") & "' AND " & _
                              "STATUS ='P'"
             ds = LoadSQL(mysql, "JO_LIST")
-            End If
-
-            If ds.Tables(0).Rows.Count = 0 Then Console.WriteLine("Found nothing.", MsgBoxStyle.Information, "Count") : Exit Sub
+            If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+        End If
 
         lvJobOrder.Items.Clear()
-            For Each dr As DataRow In ds.Tables(0).Rows
-                JO = New JobOrder
-                JO.ID = dr.Item("JOID")
-                JO.LoadJobOrder()
-                additem(JO)
-            Next
+        For Each dr As DataRow In ds.Tables(0).Rows
+            JO = New JobOrder
+            JO.ID = dr.Item("JOID")
+            JO.LoadJobOrder()
+            additem(JO)
+        Next
 
+        MsgBox("Found: [" & ds.Tables(0).Rows.Count & "] JO List", MsgBoxStyle.OkOnly, "Count")
     End Sub
 
     Private Sub additem(ByVal JOlist As JobOrder)
         If JOlist.ID = 0 Then Exit Sub
 
 
-        Dim lv As ListViewItem = lvJobOrder.Items.Add(JOlist.ID)
+        Dim lv As ListViewItem = lvJobOrder.Items.Add(JOlist.Name)
         lv.SubItems.Add(JOlist.Description)
         lv.SubItems.Add(JOlist.Remarks)
 
@@ -97,6 +121,7 @@
             lv.BackColor = ColorTranslator.FromHtml("#ff0000") 'Cancel
         End If
 
+        lv.Tag = JOlist.ID
         JOlist = JO
     End Sub
 

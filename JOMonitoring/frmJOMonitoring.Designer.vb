@@ -22,7 +22,7 @@ Partial Class frmJOMonitoring
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"Collecting Cash", "For Party party", "Sam Apple", "Hoo Jun Maa", "Tratar De Cogerme", "05/16/2016", "05/16/2018", "RefNum# 101470", "Pending"}, -1)
+        Dim ListViewItem1 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem(New String() {"EllieGwapo", "Junmar", "For Party party", "Sam Apple", "Hoo Jun Maa", "Tratar De Cogerme", "05/16/2016", "05/16/2018", "RefNum# 101470"}, -1)
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmJOMonitoring))
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -41,6 +41,7 @@ Partial Class frmJOMonitoring
         Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -124,7 +125,7 @@ Partial Class frmJOMonitoring
         Me.lvJobOrder.FullRowSelect = True
         Me.lvJobOrder.GridLines = True
         Me.lvJobOrder.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem1})
-        Me.lvJobOrder.Location = New System.Drawing.Point(24, 88)
+        Me.lvJobOrder.Location = New System.Drawing.Point(24, 91)
         Me.lvJobOrder.Name = "lvJobOrder"
         Me.lvJobOrder.Size = New System.Drawing.Size(891, 268)
         Me.lvJobOrder.TabIndex = 1
@@ -134,12 +135,12 @@ Partial Class frmJOMonitoring
         'ColumnHeader1
         '
         Me.ColumnHeader1.Text = "Name"
-        Me.ColumnHeader1.Width = 113
+        Me.ColumnHeader1.Width = 108
         '
         'ColumnHeader2
         '
         Me.ColumnHeader2.Text = "Description"
-        Me.ColumnHeader2.Width = 197
+        Me.ColumnHeader2.Width = 154
         '
         'ColumnHeader3
         '
@@ -164,7 +165,7 @@ Partial Class frmJOMonitoring
         'ColumnHeader7
         '
         Me.ColumnHeader7.Text = "Target Date"
-        Me.ColumnHeader7.Width = 76
+        Me.ColumnHeader7.Width = 53
         '
         'ColumnHeader8
         '
@@ -174,12 +175,23 @@ Partial Class frmJOMonitoring
         'ColumnHeader9
         '
         Me.ColumnHeader9.Text = "Status"
+        Me.ColumnHeader9.Width = 114
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(810, 364)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(105, 41)
+        Me.Button1.TabIndex = 6
+        Me.Button1.Text = "&Comment"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'frmJOMonitoring
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(929, 376)
+        Me.ClientSize = New System.Drawing.Size(929, 410)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lvJobOrder)
         Me.Controls.Add(Me.GroupBox2)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -209,5 +221,6 @@ Partial Class frmJOMonitoring
     Friend WithEvents ColumnHeader7 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader8 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader9 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
