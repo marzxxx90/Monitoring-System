@@ -140,8 +140,8 @@
         mySql = "SELECT * FROM TBLEMPLOYEE ORDER BY EMP_ID DESC LIMIT 1"
         ds = LoadSQL(mySql)
 
-        Dim id As Integer = ds.Tables(0).Rows(0).Item("Emp_ID")
-        _id = id
+        Dim idx As Integer = ds.Tables(0).Rows(0).Item("Emp_ID")
+        _id = idx
 
         LoadEmployee()
     End Sub
