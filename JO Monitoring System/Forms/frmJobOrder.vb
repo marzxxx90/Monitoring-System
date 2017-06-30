@@ -62,12 +62,12 @@
     End Sub
 
     Friend Sub LoadRequestor(ByVal Emp As Employee)
-        txtRequestBy.Text = String.Format("{0} {1}" & IIf(Emp.Suffix <> "", "," & Emp.Suffix, ""), Emp.FirstName, Emp.LastName)
+        txtRequestBy.Text = String.Format("{0} {1}" & IIf(Emp.Suffix <> "", "," & Emp.Suffix, ""), Emp.FirstName & IIf(Emp.MiddleName = "", "", Emp.MiddleName), Emp.LastName)
         Requestor = Emp
     End Sub
 
     Friend Sub LoadInCharger(ByVal Emp As Employee)
-        txtInCharge.Text = String.Format("{0} {1}" & IIf(Emp.Suffix <> "", "," & Emp.Suffix, ""), Emp.FirstName, Emp.LastName)
+        txtInCharge.Text = String.Format("{0} {1}" & IIf(Emp.Suffix <> "", "," & Emp.Suffix, ""), Emp.FirstName & IIf(Emp.MiddleName = "", "", Emp.MiddleName), Emp.LastName)
         Incharge = Emp
     End Sub
 
